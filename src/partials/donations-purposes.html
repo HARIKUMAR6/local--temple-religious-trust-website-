@@ -1,0 +1,27 @@
+<!-- Donations 3 · Purposes (bento layout) -->
+<section id="purposes" class="section-y dn-purposes" aria-labelledby="purposes-title">
+  <div class="container-temple">
+    <div class="hm-split-head">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Where Support Goes</p>
+        <h2 id="purposes-title">What your support can help with</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-heart-hand"/></svg></div>
+      </div>
+      <p class="hm-lead" data-reveal style="--reveal-delay:100ms">These are the areas where temples usually need support. Ask the Temple Office which of them the Trust is raising funds for.</p>
+    </div>
+
+    <ul class="dn-bento">
+      {{#each site.donationsPage.purposes}}
+      <li class="dn-tile dn-t{{this.index}}" data-reveal style="--reveal-delay:{{this.index}}00ms">
+        <figure class="dn-tile-photo hm-zoom"><img src="{{this.img}}" srcset="{{this.imgSet}}" sizes="(min-width: 64rem) 520px, (min-width: 40rem) 46vw, 100vw" loading="lazy" decoding="async" alt="{{this.alt}}"></figure>
+        <div class="dn-tile-body">
+          <span class="dn-tile-icon" aria-hidden="true"><svg class="icon"><use href="#i-{{this.icon}}"/></svg></span>
+          <h3>{{this.title}}</h3>
+          <p>{{this.text}}</p>
+          {{#if this.first}}<a class="link-arrow" href="contact.html?topic=donation">Ask how to contribute<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>{{/if}}
+        </div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>

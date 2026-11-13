@@ -1,0 +1,25 @@
+<!-- Donations 4 · Ways to support (centred spine) -->
+<section id="ways" class="section-y dn-ways-sec" aria-labelledby="ways-title">
+  <div class="container-temple">
+    <div class="section-head is-centered" data-reveal>
+      <p class="text-eyebrow-style">Ways to Support</p>
+      <h2 id="ways-title">Four ways to take part</h2>
+      <div class="ornament" aria-hidden="true"><svg class="icon"><use href="#i-lotus"/></svg></div>
+      <p class="hm-lead">Giving is more than money. Choose the way that suits you.</p>
+    </div>
+
+    <ol class="dn-ways">
+      {{#each site.donationsPage.ways}}
+      <li class="dn-way" data-reveal style="--reveal-delay:{{this.index}}00ms">
+        <span class="dn-way-node" aria-hidden="true">{{this.n}}</span>
+        <div class="dn-way-body">
+          <h3>{{this.title}}</h3>
+          <p>{{this.text}}</p>
+          <a class="link-arrow" href="{{this.href}}">{{this.label}}<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </div>
+        <figure class="dn-way-photo hm-zoom"><img src="{{this.img}}" srcset="{{this.imgSet}}" sizes="(min-width: 64rem) 460px, 100vw" loading="lazy" decoding="async" alt="{{this.alt}}"></figure>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>

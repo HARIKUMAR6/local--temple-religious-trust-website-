@@ -1,0 +1,34 @@
+<!-- About 5 · Traditions & community (typographic index) -->
+<section id="traditions" class="section-y ab-trad" aria-labelledby="trad-title">
+  <div class="container-temple ab-trad-grid">
+    <div class="ab-trad-aside">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Traditions &amp; Community</p>
+        <h2 id="trad-title">More than a building</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-users"/></svg></div>
+        <p class="hm-lead">A temple lives through the people who gather there. This is what temple life usually includes.</p>
+      </div>
+      <figure class="ab-trad-photo hm-zoom" data-reveal="zoom">
+        <img
+          src="assets/img/pages/about-community-1400.jpg"
+          srcset="assets/img/pages/about-community-800.jpg 800w, assets/img/pages/about-community-1400.jpg 1400w"
+          sizes="(min-width: 64rem) 460px, 100vw"
+          loading="lazy" decoding="async"
+          alt="The tiled-roof entrance hall of a Kerala temple with white pillars and a lamp column">
+      </figure>
+    </div>
+
+    <div class="ab-trad-list">
+      <ul class="ab-index">
+        {{#each site.about.traditions}}
+        <li data-reveal style="--reveal-delay:{{this.index}}00ms">
+          <span class="ab-index-icon" aria-hidden="true"><svg class="icon"><use href="#i-{{this.icon}}"/></svg></span>
+          <h3>{{this.title}}</h3>
+          <p>{{this.text}}</p>
+        </li>
+        {{/each}}
+      </ul>
+      <p class="hm-notice" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-temple"/></svg><span>{{site.about.traditionsNote}}</span></p>
+    </div>
+  </div>
+</section>

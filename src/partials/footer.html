@@ -1,0 +1,77 @@
+<footer class="site-footer">
+  <div class="thoranam" aria-hidden="true"></div>
+
+  <div class="container-temple footer-main">
+    <div class="footer-brand">
+      <a class="brand" href="index.html">
+        {{> emblem}}
+        <span class="brand-text">
+          <span class="brand-name">{{site.templeName}}</span>
+          <span class="brand-tag">{{site.tagline}}</span>
+        </span>
+      </a>
+      <p class="footer-blurb">{{site.aboutBlurb}}</p>
+      <div>
+        <a class="btn btn-on-dark btn-sm" href="donations.html">
+          <svg class="icon" aria-hidden="true"><use href="#i-heart-hand"/></svg>{{site.donateLabel}}
+        </a>
+      </div>
+    </div>
+
+    <nav aria-label="Footer">
+      <h2 class="footer-heading">Explore</h2>
+      <ul class="footer-links">
+        <li><a href="index.html" data-nav="index"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg>Home 1</a></li>
+        <li><a href="home-2.html" data-nav="home-2"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg>Home 2</a></li>
+        <li><a href="about.html" data-nav="about"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg>About</a></li>
+        <li><a href="pooja-timings.html" data-nav="pooja-timings"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg>Pooja Timings</a></li>
+        <li><a href="donations.html" data-nav="donations"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg>Donations</a></li>
+        <li><a href="contact.html" data-nav="contact"><svg class="icon" aria-hidden="true"><use href="#i-chevron-right"/></svg>Contact</a></li>
+      </ul>
+    </nav>
+
+    <div>
+      <h2 class="footer-heading">Visit &amp; Contact</h2>
+      <ul class="contact-list">
+        <li class="contact-item">
+          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg></span>
+          <span>
+            <span class="contact-label">Address</span>
+            <address class="not-italic">{{site.address.line1}}, {{site.address.line2}}<br>{{site.address.city}}, {{site.address.state}} {{site.address.postalCode}}<br>{{site.address.country}}</address>
+            {{#if site.address.mapUrl}}<a href="{{site.address.mapUrl}}" target="_blank" rel="noopener">View on map</a>{{/if}}
+          </span>
+        </li>
+        <li class="contact-item">
+          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+          <span><span class="contact-label">Phone</span><a href="tel:{{site.phone.href}}">{{site.phone.display}}</a></span>
+        </li>
+        <li class="contact-item">
+          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+          <span><span class="contact-label">Email</span><a href="mailto:{{site.email}}">{{site.email}}</a></span>
+        </li>
+        <li class="contact-item">
+          <span class="contact-icon"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span>
+          <span><span class="contact-label">Office</span>{{site.officeHours}}</span>
+        </li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="footer-heading">Stay Connected</h2>
+      <ul class="social-list">
+        {{#if site.socials.facebook}}<li><a class="social-link" href="{{site.socials.facebook}}" target="_blank" rel="noopener" aria-label="Facebook (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-facebook"/></svg></a></li>{{/if}}
+        {{#if site.socials.instagram}}<li><a class="social-link" href="{{site.socials.instagram}}" target="_blank" rel="noopener" aria-label="Instagram (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-instagram"/></svg></a></li>{{/if}}
+        {{#if site.socials.youtube}}<li><a class="social-link" href="{{site.socials.youtube}}" target="_blank" rel="noopener" aria-label="YouTube (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg></a></li>{{/if}}
+        {{#if site.socials.x}}<li><a class="social-link" href="{{site.socials.x}}" target="_blank" rel="noopener" aria-label="X (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></a></li>{{/if}}
+        {{#if site.socials.whatsapp}}<li><a class="social-link" href="{{site.socials.whatsapp}}" target="_blank" rel="noopener" aria-label="WhatsApp (opens in a new tab)"><svg class="icon" aria-hidden="true"><use href="#i-whatsapp"/></svg></a></li>{{/if}}
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="container-temple footer-bottom-inner">
+      <p>&copy; {{year}} {{site.trustName}}. All rights reserved.</p>
+      <p>{{site.trustRegistration}}</p>
+    </div>
+  </div>
+</footer>

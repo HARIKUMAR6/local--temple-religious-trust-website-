@@ -1,0 +1,46 @@
+/* ==========================================================================
+   Shared hero height system
+   Any page hero (Home 1 now, Home 2 later) opts in with `.hero-shell` so all
+   heroes share the same responsive height rules:
+
+     • phones/tablets (<1024px): content decides the height, with a floor
+     • desktop: fills the first screen under the sticky header, capped so that
+       ultra-wide / tall monitors never produce a towering hero
+   ========================================================================== */
+
+@layer components {
+  :root {
+    --hero-min: 34rem; /* floor at every width */
+    --hero-max: 56rem; /* cap on tall screens */
+  }
+
+  .hero-shell {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    min-height: var(--hero-min);
+    overflow: hidden;
+    color: #f1e4cc;
+    background: var(--color-maroon-950);
+  }
+
+  @media (width >= 64rem) {
+    .hero-shell {
+      /* 100svh minus the sticky header (+ its 4px colour band) */
+      min-height: clamp(var(--hero-min), calc(100svh - var(--header-h) - 4px), var(--hero-max));
+    }
+  }
+
+  /* Full-bleed media layer + readability shade */
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+  .hero-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

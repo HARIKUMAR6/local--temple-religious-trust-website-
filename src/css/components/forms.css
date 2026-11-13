@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Forms
+   ========================================================================== */
+
+@layer components {
+  .field {
+    display: grid;
+    gap: 0.4rem;
+  }
+
+  .label {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--text);
+  }
+  .label .req {
+    color: var(--accent);
+    margin-inline-start: 0.15em;
+  }
+
+  .input,
+  .select,
+  .textarea {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 0.95rem 0.6rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-chip);
+    background: var(--surface-raised);
+    color: var(--text);
+    font: inherit;
+    font-size: 1rem; /* ≥16px avoids iOS zoom */
+    line-height: 1.4;
+    transition:
+      border-color var(--duration-base) ease,
+      box-shadow var(--duration-base) ease;
+  }
+  .input::placeholder,
+  .textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.85;
+  }
+  .input:hover,
+  .select:hover,
+  .textarea:hover {
+    border-color: var(--accent);
+  }
+  .input:focus-visible,
+  .select:focus-visible,
+  .textarea:focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 1px;
+    border-color: var(--ring);
+    box-shadow: 0 0 0 5px var(--ring-halo);
+  }
+  .textarea {
+    min-height: 8rem;
+    resize: vertical;
+  }
+
+  .select {
+    appearance: none;
+    padding-inline-end: 2.75rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238c7461' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-size: 1.1rem;
+    background-position: right 0.9rem center;
+  }
+  [dir="rtl"] .select {
+    background-position: left 0.9rem center;
+  }
+
+  .input[aria-invalid="true"],
+  .select[aria-invalid="true"],
+  .textarea[aria-invalid="true"] {
+    border-color: #b42318;
+  }
+  [data-theme="dark"] .input[aria-invalid="true"],
+  [data-theme="dark"] .select[aria-invalid="true"],
+  [data-theme="dark"] .textarea[aria-invalid="true"] {
+    border-color: #f97066;
+  }
+
+  .input:disabled,
+  .select:disabled,
+  .textarea:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+
+  .help-text {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+  .error-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #b42318;
+  }
+  [data-theme="dark"] .error-text {
+    color: #fda29b;
+  }
+
+  /* Checkbox / radio */
+  .check {
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    cursor: pointer;
+  }
+  .check input {
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.2rem;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+  }
+}

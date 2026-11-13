@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Temple & Religious Trust — Design System entry
+   Tailwind CSS v4 (CLI). Sources are declared explicitly; dist/ is never scanned.
+   ========================================================================== */
+@import "tailwindcss" source(none);
+
+@source "../pages";
+@source "../partials";
+@source "../js";
+
+/* Dark mode is driven by <html data-theme="dark"> (set before first paint). */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@import "./tokens.css";
+@import "./base.css";
+@import "./components/layout.css";
+@import "./components/patterns.css";
+@import "./components/buttons.css";
+@import "./components/cards.css";
+@import "./components/forms.css";
+@import "./components/header.css";
+@import "./components/mobile-menu.css";
+@import "./components/page-intro.css";
+@import "./components/footer.css";
+@import "./components/scroll-top.css";
+@import "./components/motion.css";
+@import "./components/hero.css";
+@import "./components/home-1.css";
+@import "./components/home-2.css";
+@import "./components/about.css";
+@import "./components/pooja-timings.css";
+@import "./components/donations.css";
+@import "./components/contact.css";

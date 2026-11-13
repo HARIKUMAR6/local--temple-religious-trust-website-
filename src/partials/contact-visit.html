@@ -1,0 +1,31 @@
+<!-- Contact 5 · Visit information & directions -->
+<section id="visit-info" class="section-y ct-visit" aria-labelledby="visit-info-title">
+  <div class="container-temple ct-visit-grid">
+    <figure class="ct-visit-photo hm-zoom" data-reveal="zoom">
+      <img src="assets/img/pages2/contact-visit-1400.jpg" srcset="assets/img/pages2/contact-visit-800.jpg 800w, assets/img/pages2/contact-visit-1400.jpg 1400w" sizes="(min-width: 64rem) 520px, 100vw" loading="lazy" decoding="async" alt="A white pillared Kerala temple building with a tiled roof beside a green lawn">
+    </figure>
+    <div class="ct-visit-copy">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Visit Information</p>
+        <h2 id="visit-info-title">Planning your visit</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-map-pin"/></svg></div>
+      </div>
+      <ul class="ct-checks">
+        {{#each site.contact.visit}}
+        <li data-reveal style="--reveal-delay:{{this.index}}00ms">
+          <span class="ct-check-icon" aria-hidden="true"><svg class="icon"><use href="#i-{{this.icon}}"/></svg></span>
+          <div>
+            <h3>{{this.title}}</h3>
+            <p>{{this.text}}</p>
+            {{#if this.href}}<a class="link-arrow" href="{{this.href}}">{{this.label}}<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>{{/if}}
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+      <div class="hm-cta-row hm2-cta-start" data-reveal>
+        <a class="btn btn-primary" href="{{site.contact.directionsUrl}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Get Directions<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-outline" href="pooja-timings.html"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Pooja Timings</a>
+      </div>
+    </div>
+  </div>
+</section>

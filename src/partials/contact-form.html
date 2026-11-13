@@ -1,0 +1,84 @@
+<!-- Contact 4 · Enquiry form -->
+<section id="form" class="section-y ct-form-sec" aria-labelledby="form-title">
+  <div class="container-temple ct-form-grid">
+    <div class="ct-form-aside">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Enquiry</p>
+        <h2 id="form-title">Send the Temple Office a message</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></div>
+        <p class="hm-lead">Tell us what you would like to ask. Choose a topic so your message reaches the right person.</p>
+      </div>
+      <ol class="ct-steps" data-reveal>
+        <li><span aria-hidden="true">1</span>Fill in your details and message.</li>
+        <li><span aria-hidden="true">2</span>Your email app opens with the message ready, addressed to the temple office.</li>
+        <li><span aria-hidden="true">3</span>Press Send in your email app. It is not sent until you do.</li>
+      </ol>
+      <p class="ct-aside-note" data-reveal>Prefer to talk? Call <a href="tel:{{site.phone.href}}">{{site.phone.display}}</a>.</p>
+    </div>
+
+    <div class="ct-form-panel" data-reveal style="--reveal-delay:100ms">
+      <form class="ct-form" id="enquiry-form" action="{{site.contact.formAction}}" method="post" enctype="{{site.contact.formEnctype}}" data-contact-form data-endpoint="{{site.contact.formEndpoint}}" data-email="{{site.email}}" data-phone="{{site.phone.display}}" aria-labelledby="form-title">
+        <div class="ct-summary" role="alert" tabindex="-1" hidden data-summary>
+          <h3>Please fix the following</h3>
+          <ul></ul>
+        </div>
+
+        <div class="ct-fields">
+          <div class="field">
+            <label class="label" for="f-name">Your name <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="err-name">
+            <p class="error-text" id="err-name" hidden></p>
+          </div>
+          <div class="field">
+            <label class="label" for="f-email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="err-email">
+            <p class="error-text" id="err-email" hidden></p>
+          </div>
+          <div class="field">
+            <label class="label" for="f-phone">Phone <span class="help-inline">(optional)</span></label>
+            <input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" aria-describedby="err-phone">
+            <p class="error-text" id="err-phone" hidden></p>
+          </div>
+          <div class="field">
+            <label class="label" for="f-topic">Enquiry topic <span class="req" aria-hidden="true">*</span></label>
+            <select class="select" id="f-topic" name="topic" required aria-describedby="topic-note err-topic">
+              <option value="" selected disabled>Choose a topic</option>
+              <optgroup label="General">
+                {{#each site.contact.topics}}<option value="{{this.id}}">{{this.label}}</option>{{/each}}
+              </optgroup>
+              <optgroup label="Sevas">
+                {{#each site.home.sevas}}<option value="seva-{{this.id}}">{{this.name}} seva</option>{{/each}}
+              </optgroup>
+              <optgroup label="Festivals">
+                {{#each site.home.festivals}}<option value="festival-{{this.id}}">{{this.name}}</option>{{/each}}
+              </optgroup>
+            </select>
+            <p class="help-text" id="topic-note" role="status" hidden data-topic-note></p>
+            <p class="error-text" id="err-topic" hidden></p>
+          </div>
+          <div class="field ct-wide">
+            <label class="label" for="f-message">Your message <span class="req" aria-hidden="true">*</span></label>
+            <textarea class="textarea" id="f-message" name="message" rows="6" required minlength="10" aria-describedby="err-message"></textarea>
+            <p class="error-text" id="err-message" hidden></p>
+          </div>
+        </div>
+
+        <div class="ct-submit">
+          <button type="submit" class="btn btn-primary btn-lg"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{site.contact.submitLabel}}</button>
+          <p class="help-text"><span class="req" aria-hidden="true">*</span> Required. Your details are used only to answer your enquiry.</p>
+        </div>
+
+        <div class="ct-result" tabindex="-1" hidden data-result aria-live="polite">
+          <h3 data-result-title></h3>
+          <p data-result-text></p>
+          <div class="ct-result-actions">
+            <a class="btn btn-primary btn-sm" href="mailto:{{site.email}}" data-result-mailto hidden>Open Email App Again</a>
+            <button type="button" class="btn btn-outline btn-sm" data-result-copy hidden>Copy Message</button>
+            <button type="button" class="btn btn-ghost btn-sm" data-result-edit>Edit My Message</button>
+          </div>
+          <p class="hm-status" role="status" data-result-status></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>

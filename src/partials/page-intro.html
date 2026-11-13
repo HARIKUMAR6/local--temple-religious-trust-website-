@@ -1,0 +1,18 @@
+<section class="page-intro bg-kolam is-faded" aria-labelledby="page-title">
+  <svg class="page-intro-mark" aria-hidden="true" focusable="false"><use href="#mark-outline"/></svg>
+  <div class="container-temple">
+    <div class="page-intro-inner">
+      {{#if page.breadcrumb}}<nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true"><svg class="icon icon-dir"><use href="#i-chevron-right"/></svg></li>
+          <li><span aria-current="page">{{page.breadcrumb}}</span></li>
+        </ol>
+      </nav>{{/if}}
+      <p class="text-eyebrow-style page-intro-eyebrow" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-lotus"/></svg>{{page.eyebrow}}</p>
+      <h1 id="page-title" data-reveal style="--reveal-delay:80ms">{{page.heading}}</h1>
+      <div class="ornament is-start" aria-hidden="true" data-reveal style="--reveal-delay:140ms"><svg class="icon"><use href="#i-lamp"/></svg></div>
+      <p class="page-intro-lead" data-reveal style="--reveal-delay:200ms">{{page.lead}}</p>
+    </div>
+  </div>
+</section>

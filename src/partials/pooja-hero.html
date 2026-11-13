@@ -1,0 +1,41 @@
+<!-- Pooja 1 · Hero (announcement + "day dial") -->
+<section id="top" class="hero-shell pt-hero" aria-labelledby="hero-title">
+  <div class="container-temple pt-hero-grid">
+    <div class="pt-hero-copy">
+      <nav class="breadcrumb" aria-label="Breadcrumb" data-reveal>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true"><svg class="icon icon-dir"><use href="#i-chevron-right"/></svg></li>
+          <li><span aria-current="page">Pooja Timings</span></li>
+        </ol>
+      </nav>
+      <p class="text-eyebrow-style" data-reveal>Daily Worship</p>
+      <h1 id="hero-title" data-reveal style="--reveal-delay:80ms">Pooja Timings</h1>
+      <p class="pt-hero-lead" data-reveal style="--reveal-delay:140ms">Worship at {{site.templeName}} follows the rhythm of the day. Find the daily schedule, what each part of the day involves, and how to ask the temple office.</p>
+      {{#if site.poojaPage.announcement}}
+      <p class="pt-pill" role="status" data-reveal style="--reveal-delay:200ms"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span>Timings to be announced</span></p>
+      {{/if}}
+      <div class="hm-cta-row hm2-cta-start" data-reveal style="--reveal-delay:260ms">
+        <a class="btn btn-primary btn-lg" href="#schedule"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>See the Schedule</a>
+        <a class="btn btn-outline btn-lg" href="tel:{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call the Temple</a>
+      </div>
+    </div>
+
+    <div class="pt-dial" data-reveal="zoom">
+      <figure class="pt-dial-photo hm-zoom">
+        <img
+          src="assets/img/pages/pooja-hero-1000.jpg"
+          srcset="assets/img/pages/pooja-hero-640.jpg 640w, assets/img/pages/pooja-hero-1000.jpg 1000w"
+          sizes="(min-width: 64rem) 420px, 70vw"
+          width="1000" height="750" fetchpriority="high" decoding="async"
+          alt="A Kerala temple with a long wall of wooden lamp niches surrounding the sanctum, under a blue sky">
+      </figure>
+      <svg class="pt-dial-ring" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><circle cx="50" cy="50" r="46" fill="none" stroke="currentColor" stroke-width="0.5"/><circle cx="50" cy="50" r="48.5" fill="none" stroke="currentColor" stroke-width="0.25" stroke-dasharray="0.6 1.4"/></svg>
+      <ul class="pt-dial-nodes" aria-label="Jump to a part of the day">
+        {{#each site.poojaPage.rituals}}
+        <li class="pt-dial-node pt-n{{this.index}}"><a href="#rituals" data-tab-link="{{this.id}}"><span class="pt-dial-icon"><svg class="icon" aria-hidden="true"><use href="#i-{{this.icon}}"/></svg></span><span class="pt-dial-label">{{this.label}}</span></a></li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>

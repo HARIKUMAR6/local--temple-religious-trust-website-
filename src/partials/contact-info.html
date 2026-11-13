@@ -1,0 +1,34 @@
+<!-- Contact 2 · Contact information (letterhead row) -->
+<section id="info" class="section-y ct-info" aria-labelledby="info-title">
+  <div class="container-temple">
+    <div class="section-head is-centered" data-reveal>
+      <p class="text-eyebrow-style">Temple Office</p>
+      <h2 id="info-title">How to reach us</h2>
+      <div class="ornament" aria-hidden="true"><svg class="icon"><use href="#i-lamp"/></svg></div>
+    </div>
+
+    <ul class="ct-slab">
+      <li data-reveal>
+        <span class="ct-slab-icon" aria-hidden="true"><svg class="icon"><use href="#i-map-pin"/></svg></span>
+        <div><h3>Address</h3>
+          <address class="ct-slab-value">{{site.address.line1}}, {{site.address.line2}}<br>{{site.address.city}}, {{site.address.state}} {{site.address.postalCode}}<br>{{site.address.country}}</address>
+          <a class="link-arrow" href="{{site.contact.directionsUrl}}" target="_blank" rel="noopener">Get directions<span class="sr-only"> (opens in a new tab)</span><svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+      </li>
+      <li data-reveal style="--reveal-delay:100ms">
+        <span class="ct-slab-icon" aria-hidden="true"><svg class="icon"><use href="#i-phone"/></svg></span>
+        <div><h3>Phone</h3><p class="ct-slab-value">{{site.phone.display}}</p>
+          <a class="link-arrow" href="tel:{{site.phone.href}}">Call now<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+      </li>
+      <li data-reveal style="--reveal-delay:200ms">
+        <span class="ct-slab-icon" aria-hidden="true"><svg class="icon"><use href="#i-mail"/></svg></span>
+        <div><h3>Email</h3><p class="ct-slab-value">{{site.email}}</p>
+          <a class="link-arrow" href="mailto:{{site.email}}">Write an email<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+      </li>
+      <li data-reveal style="--reveal-delay:300ms">
+        <span class="ct-slab-icon" aria-hidden="true"><svg class="icon"><use href="#i-clock"/></svg></span>
+        <div><h3>Office hours</h3><p class="ct-slab-value">{{site.officeHours}}</p>
+          <a class="link-arrow" href="pooja-timings.html">Pooja timings<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a></div>
+      </li>
+    </ul>
+  </div>
+</section>

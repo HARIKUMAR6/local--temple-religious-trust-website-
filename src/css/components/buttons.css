@@ -1,0 +1,219 @@
+/* ==========================================================================
+   Buttons & links
+   "Lamp-plate" buttons: chamfered corners drawn on a ::before layer so the
+   focus outline is never clipped. Variants: primary, gold, outline, ghost.
+   ========================================================================== */
+
+@layer components {
+  .btn {
+    --chamfer: 9px;
+    --btn-bg: var(--btn-primary-bg);
+    --btn-bg-hover: var(--btn-primary-bg-hover);
+    --btn-fg: var(--btn-primary-fg);
+    --btn-edge: transparent;
+
+    position: relative;
+    isolation: isolate;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 2.875rem; /* 46px touch target */
+    padding: 0.55rem 1.5rem 0.5rem;
+    border: 0;
+    background: transparent;
+    color: var(--btn-fg);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition:
+      color var(--duration-base) ease,
+      transform var(--duration-base) var(--ease-temple);
+  }
+  .btn::before,
+  .btn::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    clip-path: polygon(
+      var(--chamfer) 0,
+      calc(100% - var(--chamfer)) 0,
+      100% var(--chamfer),
+      100% calc(100% - var(--chamfer)),
+      calc(100% - var(--chamfer)) 100%,
+      var(--chamfer) 100%,
+      0 calc(100% - var(--chamfer)),
+      0 var(--chamfer)
+    );
+    transition: background-color var(--duration-base) ease;
+  }
+  /* edge layer */
+  .btn::before {
+    inset: 0;
+    background-color: var(--btn-edge);
+  }
+  /* fill layer (inset 1.5px so an edge colour can show around it) */
+  .btn::after {
+    inset: 1.5px;
+    --chamfer: 8.4px;
+    background-color: var(--btn-bg);
+  }
+  .btn:hover {
+    color: var(--btn-fg);
+    transform: translateY(-1px);
+  }
+  .btn:hover::after {
+    background-color: var(--btn-bg-hover);
+  }
+  .btn:active {
+    transform: translateY(0);
+  }
+  .btn:focus-visible {
+    border-radius: 2px;
+  }
+  .btn[disabled],
+  .btn[aria-disabled="true"] {
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .btn .icon {
+    width: 1.15em;
+    height: 1.15em;
+  }
+
+  .btn-primary {
+    --btn-edge: var(--btn-primary-bg);
+  }
+  .btn-primary:hover {
+    --btn-edge: var(--color-gold-400);
+  }
+
+  .btn-gold {
+    --btn-bg: var(--btn-gold-bg);
+    --btn-bg-hover: var(--btn-gold-bg-hover);
+    --btn-fg: var(--btn-gold-fg);
+    --btn-edge: var(--color-gold-500);
+  }
+
+  .btn-outline {
+    --btn-bg: var(--surface);
+    --btn-bg-hover: var(--surface-alt);
+    --btn-fg: var(--accent);
+    --btn-edge: var(--accent);
+  }
+
+  .btn-ghost {
+    --btn-bg: transparent; /* safe: the edge layer is transparent too */
+    --btn-bg-hover: color-mix(in srgb, var(--accent) 9%, transparent);
+    --btn-fg: var(--link);
+    --btn-edge: transparent;
+  }
+
+  /* On dark/maroon bands (e.g. footer) */
+  .btn-on-dark {
+    /* the fill layer must be opaque, or the gold edge layer shows through */
+    --btn-bg: var(--footer-bg);
+    --btn-bg-hover: color-mix(in srgb, var(--color-gold-300) 14%, var(--footer-bg));
+    --btn-fg: var(--color-gold-300);
+    --btn-edge: var(--color-gold-300);
+  }
+
+  .btn-sm {
+    --chamfer: 7px;
+    min-height: 2.5rem;
+    padding: 0.45rem 1.1rem 0.4rem;
+    font-size: 0.9375rem;
+  }
+  .btn-sm::after {
+    --chamfer: 6.4px;
+  }
+  .btn-lg {
+    --chamfer: 11px;
+    min-height: 3.375rem;
+    padding: 0.7rem 2rem 0.65rem;
+    font-size: 1.0625rem;
+  }
+  .btn-lg::after {
+    --chamfer: 10.4px;
+  }
+  .btn-block {
+    width: 100%;
+  }
+
+  /* Round icon-only button (header controls) */
+  .icon-btn {
+    display: inline-grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--surface-raised);
+    color: var(--text);
+    cursor: pointer;
+    transition:
+      border-color var(--duration-base) ease,
+      color var(--duration-base) ease,
+      background-color var(--duration-base) ease;
+  }
+  .icon-btn:hover {
+    border-color: var(--ornament);
+    color: var(--accent);
+  }
+  .icon-btn .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  /* Theme toggle swaps glyph by theme */
+  [data-theme-toggle] .when-dark {
+    display: none;
+  }
+  [data-theme="dark"] [data-theme-toggle] .when-dark {
+    display: inline-block;
+  }
+  [data-theme="dark"] [data-theme-toggle] .when-light {
+    display: none;
+  }
+
+  /* Links */
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 600;
+    color: var(--link);
+    text-decoration: none;
+  }
+  .link-arrow .icon {
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  .link-arrow:hover .icon {
+    transform: translateX(4px);
+  }
+  [dir="rtl"] .link-arrow .icon {
+    transform: scaleX(-1);
+  }
+  [dir="rtl"] .link-arrow:hover .icon {
+    transform: scaleX(-1) translateX(4px);
+  }
+
+  .link-underline {
+    color: var(--link);
+    text-decoration: none;
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0% 1px;
+    transition: background-size var(--duration-base) var(--ease-temple);
+  }
+  [dir="rtl"] .link-underline {
+    background-position: 100% 100%;
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+}

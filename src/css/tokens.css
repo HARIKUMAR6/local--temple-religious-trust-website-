@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Design tokens
+   1. Fonts (self-hosted, copied to dist/assets/fonts by the build)
+   2. Raw palette + type scale  → Tailwind @theme (generates utilities)
+   3. Semantic, theme-aware tokens on :root / [data-theme="dark"]
+   ========================================================================== */
+
+/* 1 ─ Fonts ───────────────────────────────────────────────────────────── */
+@font-face {
+  font-family: "Marcellus";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/marcellus-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Mukta";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("../fonts/mukta-latin-400-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Mukta";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("../fonts/mukta-latin-500-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Mukta";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("../fonts/mukta-latin-600-normal.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Mukta";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("../fonts/mukta-latin-700-normal.woff2") format("woff2");
+}
+
+/* 2 ─ Raw palette & scale ─────────────────────────────────────────────── */
+@theme {
+  /* Kumkum maroon */
+  --color-maroon-950: #22090f;
+  --color-maroon-900: #3e0b15;
+  --color-maroon-800: #55101d;
+  --color-maroon-700: #6b1424;
+  --color-maroon-600: #84202f;
+  --color-maroon-500: #a0303f;
+
+  /* Antique gold (500 and lighter are decorative / dark-theme text only) */
+  --color-gold-700: #7a5a16;
+  --color-gold-600: #946e1f;
+  --color-gold-500: #b0852f;
+  --color-gold-400: #c9a04a;
+  --color-gold-300: #e2be6a;
+  --color-gold-200: #f0daa2;
+  --color-gold-100: #f8edd0;
+
+  /* Ivory & sandalwood */
+  --color-ivory-50: #fffdf8;
+  --color-ivory-100: #fbf6ec;
+  --color-ivory-200: #f3e9d4;
+  --color-sandal-300: #e3d3b3;
+
+  /* Complements */
+  --color-turmeric: #d9a21b;
+  --color-peacock-800: #164546;
+  --color-peacock-700: #1e5a5b;
+  --color-peacock-300: #8cc7c2;
+  --color-leaf-700: #3f6b3a;
+  --color-leaf-300: #8fbf7e;
+
+  /* Neutrals */
+  --color-ink: #2a1a14;
+  --color-night-950: #120a08;
+  --color-night-900: #1a0f0d;
+  --color-night-800: #241612;
+  --color-night-700: #2c1b16;
+
+  /* Typography */
+  --font-display: "Marcellus", "Cormorant Garamond", "Palatino Linotype", Georgia, serif;
+  --font-body: "Mukta", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Fluid type scale (min @320px → max @1440px) */
+  --text-display: clamp(2.5rem, 1.86rem + 3.2vw, 4.5rem);
+  --text-display--line-height: 1.06;
+  --text-h1: clamp(2.125rem, 1.7rem + 2.1vw, 3.5rem);
+  --text-h1--line-height: 1.1;
+  --text-h2: clamp(1.75rem, 1.46rem + 1.45vw, 2.75rem);
+  --text-h2--line-height: 1.15;
+  --text-h3: clamp(1.375rem, 1.23rem + 0.7vw, 1.875rem);
+  --text-h3--line-height: 1.2;
+  --text-h4: clamp(1.1875rem, 1.12rem + 0.33vw, 1.4375rem);
+  --text-h4--line-height: 1.3;
+  --text-lead: clamp(1.0625rem, 1rem + 0.33vw, 1.3125rem);
+  --text-lead--line-height: 1.6;
+  --text-body: 1.0625rem;
+  --text-body--line-height: 1.7;
+  --text-small: 0.9375rem;
+  --text-small--line-height: 1.55;
+  --text-eyebrow: 0.8125rem;
+  --text-eyebrow--line-height: 1.4;
+
+  /* Radii, shadows, motion */
+  --radius-chip: 0.375rem;
+  --radius-panel: 0.875rem;
+  --shadow-soft: 0 1px 2px rgb(42 26 20 / 0.06), 0 8px 24px -12px rgb(62 11 21 / 0.22);
+  --shadow-lift: 0 2px 4px rgb(42 26 20 / 0.08), 0 22px 44px -18px rgb(62 11 21 / 0.35);
+  --ease-temple: cubic-bezier(0.22, 0.8, 0.24, 1);
+  --duration-base: 240ms;
+
+  --breakpoint-xs: 26rem;
+}
+
+/* Semantic tokens exposed as utilities: bg-surface, text-muted, border-line … */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-surface-alt: var(--surface-alt);
+  --color-surface-raised: var(--surface-raised);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-heading: var(--heading);
+  --color-accent: var(--accent);
+  --color-accent-gold: var(--accent-gold);
+  --color-link: var(--link);
+  --color-line: var(--border);
+  --color-line-strong: var(--border-strong);
+}
+
+/* 3 ─ Theme-aware semantic tokens ─────────────────────────────────────── */
+@layer base {
+  :root {
+    color-scheme: light;
+    --surface: var(--color-ivory-100);
+    --surface-alt: var(--color-ivory-200);
+    --surface-raised: var(--color-ivory-50);
+    --surface-glass: rgb(251 246 236 / 0.9);
+    --text: var(--color-ink);
+    --text-muted: #5c463b;
+    --heading: #4a0e1a;
+    --accent: var(--color-maroon-700);
+    --accent-gold: var(--color-gold-700); /* gold that is safe for text */
+    --link: var(--color-maroon-700);
+    --link-hover: var(--color-maroon-600);
+    --border: var(--color-sandal-300);
+    --border-strong: #8c7461; /* ≥3:1 for form controls */
+    --ornament: var(--color-gold-500);
+    --pattern: rgb(176 133 47 / 0.22);
+    --leaf: var(--color-leaf-700);
+    --ring: var(--color-maroon-600);
+    --ring-halo: rgb(217 162 27 / 0.55);
+
+    --btn-primary-bg: var(--color-maroon-700);
+    --btn-primary-bg-hover: var(--color-maroon-800);
+    --btn-primary-fg: var(--color-ivory-100);
+    --btn-gold-bg: var(--color-gold-300);
+    --btn-gold-bg-hover: var(--color-gold-200);
+    --btn-gold-fg: var(--color-maroon-900);
+
+    --footer-bg: var(--color-maroon-900);
+    --footer-fg: #f1e4cc;
+    --footer-muted: #d8c3a5;
+    --footer-heading: var(--color-gold-300);
+    --footer-line: rgb(226 190 106 / 0.22);
+
+    --header-h: 4.75rem;
+  }
+
+  [data-theme="dark"] {
+    color-scheme: dark;
+    --surface: var(--color-night-900);
+    --surface-alt: var(--color-night-800);
+    --surface-raised: var(--color-night-700);
+    --surface-glass: rgb(26 15 13 / 0.9);
+    --text: #f3e9d8;
+    --text-muted: #cbb8a2;
+    --heading: #f6dfa6;
+    --accent: var(--color-gold-300);
+    --accent-gold: var(--color-gold-300);
+    --link: #e8c878;
+    --link-hover: var(--color-gold-200);
+    --border: #4a332a;
+    --border-strong: #9a826c;
+    --ornament: var(--color-gold-400);
+    --pattern: rgb(226 190 106 / 0.12);
+    --leaf: var(--color-leaf-300);
+    --ring: var(--color-gold-300);
+    --ring-halo: rgb(226 190 106 / 0.35);
+
+    --btn-primary-bg: var(--color-gold-300);
+    --btn-primary-bg-hover: var(--color-gold-200);
+    --btn-primary-fg: var(--color-night-900);
+    --btn-gold-bg: var(--color-gold-300);
+    --btn-gold-bg-hover: var(--color-gold-200);
+    --btn-gold-fg: var(--color-night-900);
+
+    --footer-bg: var(--color-maroon-950);
+    --footer-fg: #f1e4cc;
+    --footer-muted: #d8c3a5;
+    --footer-heading: var(--color-gold-300);
+    --footer-line: rgb(226 190 106 / 0.18);
+  }
+}

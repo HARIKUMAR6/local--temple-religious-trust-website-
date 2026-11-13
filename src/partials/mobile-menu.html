@@ -1,0 +1,56 @@
+<div id="mobile-menu" class="mobile-menu bg-kolam is-faded" role="dialog" aria-modal="true" aria-label="Site menu" data-mobile-menu hidden>
+  <div class="container-temple mobile-menu-head">
+    <a class="brand" href="index.html">
+      {{> emblem}}
+      <span class="brand-text">
+        <span class="brand-name">{{site.templeName}}</span>
+        <span class="brand-tag">{{site.tagline}}</span>
+      </span>
+    </a>
+    <button type="button" class="icon-btn" aria-label="Close menu" data-menu-close>
+      <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+    </button>
+  </div>
+
+  <div class="container-temple mobile-menu-body">
+    <nav aria-label="Mobile">
+      <ul class="m-nav">
+        <li data-accordion>
+          <button type="button" class="m-link" aria-expanded="false" aria-controls="m-home-menu" data-accordion-trigger data-nav-group="home">
+            <span>Home</span>
+            <svg class="icon chevron" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </button>
+          <ul id="m-home-menu" class="m-sub" data-accordion-panel hidden>
+            <li><a href="index.html" data-nav="index">Home 1</a></li>
+            <li><a href="home-2.html" data-nav="home-2">Home 2</a></li>
+          </ul>
+        </li>
+        <li><a class="m-link" href="about.html" data-nav="about"><span>About</span></a></li>
+        <li><a class="m-link" href="pooja-timings.html" data-nav="pooja-timings"><span>Pooja Timings</span></a></li>
+        <li><a class="m-link" href="donations.html" data-nav="donations"><span>Donations</span></a></li>
+        <li><a class="m-link" href="contact.html" data-nav="contact"><span>Contact</span></a></li>
+      </ul>
+    </nav>
+
+    <div class="m-controls" role="group" aria-label="Display preferences">
+      <button type="button" class="toggle-chip" data-theme-toggle aria-pressed="false">
+        <svg class="icon when-light" aria-hidden="true"><use href="#i-moon"/></svg>
+        <svg class="icon when-dark" aria-hidden="true"><use href="#i-sun"/></svg>
+        <span class="toggle-chip-text">Dark theme <span class="toggle-chip-state" data-state aria-hidden="true">Off</span></span>
+      </button>
+      <button type="button" class="toggle-chip" data-dir-toggle aria-pressed="false">
+        <svg class="icon" aria-hidden="true"><use href="#i-direction"/></svg>
+        <span class="toggle-chip-text">Right to left <span class="toggle-chip-state" data-state aria-hidden="true">Off</span></span>
+      </button>
+    </div>
+
+    <a class="btn btn-primary btn-lg btn-block" href="donations.html">
+      <svg class="icon" aria-hidden="true"><use href="#i-heart-hand"/></svg>{{site.donateLabel}}
+    </a>
+
+    <div class="m-contact">
+      <a href="tel:{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>{{site.phone.display}}</a>
+      <a href="mailto:{{site.email}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{site.email}}</a>
+    </div>
+  </div>
+</div>

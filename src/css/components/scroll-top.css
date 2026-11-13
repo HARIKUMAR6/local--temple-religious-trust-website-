@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Scroll-to-top: a diamond "lamp" button anchored to the inline-end corner
+   ========================================================================== */
+
+@layer components {
+  .scroll-top {
+    position: fixed;
+    inset-inline-end: clamp(1rem, 0.7rem + 1.5vw, 2rem);
+    bottom: clamp(1rem, 0.7rem + 1.5vw, 2rem);
+    z-index: 30;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 0;
+    background: none;
+    color: var(--btn-primary-fg);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition:
+      opacity var(--duration-base) ease,
+      transform var(--duration-base) var(--ease-temple),
+      visibility 0s linear var(--duration-base);
+  }
+  .scroll-top::before {
+    content: "";
+    position: absolute;
+    inset: 0.35rem;
+    z-index: -1;
+    border-radius: 0.4rem;
+    transform: rotate(45deg);
+    background: var(--btn-primary-bg);
+    box-shadow:
+      0 0 0 2px var(--surface),
+      0 0 0 3.5px var(--ornament),
+      var(--shadow-soft);
+    transition: background-color var(--duration-base) ease;
+  }
+  .scroll-top {
+    isolation: isolate;
+  }
+  .scroll-top:hover::before {
+    background: var(--btn-primary-bg-hover);
+  }
+  .scroll-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition:
+      opacity var(--duration-base) ease,
+      transform var(--duration-base) var(--ease-temple),
+      visibility 0s;
+  }
+  .scroll-top .icon {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .scroll-top:focus-visible {
+    border-radius: 999px;
+  }
+}

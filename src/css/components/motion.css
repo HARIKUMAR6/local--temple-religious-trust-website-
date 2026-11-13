@@ -1,0 +1,45 @@
+/* ==========================================================================
+   Reveal animations + reduced-motion guard
+   Content is only hidden when JS is running (html.js), so nothing is lost
+   without JavaScript.
+   ========================================================================== */
+
+@layer components {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 700ms ease,
+      transform 800ms var(--ease-temple);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .js [data-reveal="fade"] {
+    transform: none;
+  }
+  .js [data-reveal="zoom"] {
+    transform: scale(0.96);
+  }
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0ms !important;
+    scroll-behavior: auto !important;
+  }
+  .js [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+}

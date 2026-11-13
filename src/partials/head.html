@@ -1,0 +1,26 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{page.title}} | {{site.templeName}}</title>
+<meta name="description" content="{{page.description}}">
+<meta name="theme-color" content="{{site.themeColor}}">
+<meta name="color-scheme" content="light dark">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/marcellus-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/mukta-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{page.title}} | {{site.templeName}}">
+<meta property="og:description" content="{{page.description}}">
+<!-- Theme & direction are applied before first paint to avoid a flash -->
+<script>
+  (function () {
+    var d = document.documentElement, theme = null, dir = null;
+    d.classList.add('js');
+    try { theme = localStorage.getItem('tt-theme'); dir = localStorage.getItem('tt-dir'); } catch (e) {}
+    if (theme !== 'light' && theme !== 'dark') {
+      theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    d.setAttribute('data-theme', theme);
+    if (dir === 'rtl' || dir === 'ltr') d.setAttribute('dir', dir);
+  })();
+</script>
+<link rel="stylesheet" href="assets/css/main.css">

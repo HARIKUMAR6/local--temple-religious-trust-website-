@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Cards
+   • card-mandapa  — gopuram-stepped top edge + inset gold hairline
+   • card-plain    — quiet bordered panel
+   • card-feature  — centred medallion card
+   ========================================================================== */
+
+@layer components {
+  .card-plain {
+    position: relative;
+    padding: clamp(1.25rem, 1rem + 1vw, 2rem);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-panel);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-soft);
+    transition:
+      transform var(--duration-base) var(--ease-temple),
+      box-shadow var(--duration-base) ease,
+      border-color var(--duration-base) ease;
+  }
+  .card-plain.is-interactive:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lift);
+    border-color: var(--ornament);
+  }
+
+  /* Wrapper carries the shadow (clip-path would cut it off) */
+  .card-mandapa-wrap {
+    filter: drop-shadow(0 14px 22px rgb(62 11 21 / 0.12));
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  [data-theme="dark"] .card-mandapa-wrap {
+    filter: drop-shadow(0 14px 22px rgb(0 0 0 / 0.4));
+  }
+  .card-mandapa-wrap:hover {
+    transform: translateY(-4px);
+  }
+
+  .card-mandapa {
+    position: relative;
+    --step: 7px;
+    --tier: 18px;
+    padding: calc(var(--step) * 3 + clamp(1.5rem, 1.2rem + 1vw, 2.25rem)) clamp(1.25rem, 1rem + 1vw, 2rem)
+      clamp(1.5rem, 1.2rem + 1vw, 2.25rem);
+    background: var(--surface-raised);
+  }
+  .card-mandapa::before {
+    /* inset hairline frame */
+    content: "";
+    position: absolute;
+    inset: calc(var(--step) * 3 + 8px) 8px 8px;
+    border: 1px solid color-mix(in srgb, var(--ornament) 55%, transparent);
+    pointer-events: none;
+    transition: border-color var(--duration-base) ease;
+  }
+  .card-mandapa::after {
+    /* gold crown on the tier */
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: calc(var(--tier) * 2);
+    height: 3px;
+    transform: translateX(-50%);
+    background: var(--ornament);
+  }
+  .card-mandapa-wrap:hover .card-mandapa::before {
+    border-color: var(--ornament);
+  }
+  .card-mandapa > * {
+    position: relative;
+  }
+
+  .card-feature {
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    text-align: center;
+    padding: clamp(1.75rem, 1.4rem + 1.5vw, 2.75rem) clamp(1.25rem, 1rem + 1vw, 2rem);
+    border-radius: var(--radius-panel);
+    background:
+      linear-gradient(var(--surface-raised), var(--surface-raised)) padding-box,
+      linear-gradient(160deg, var(--ornament), transparent 40%, transparent 60%, var(--ornament)) border-box;
+    border: 1px solid transparent;
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  .card-feature:hover {
+    transform: translateY(-3px);
+  }
+
+  .card-title {
+    font-family: var(--font-display);
+    font-size: var(--text-h4);
+    line-height: var(--text-h4--line-height);
+    color: var(--heading);
+  }
+  .card-text {
+    color: var(--text-muted);
+  }
+}

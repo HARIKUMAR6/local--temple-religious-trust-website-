@@ -1,0 +1,197 @@
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+@layer components {
+  .site-footer {
+    position: relative;
+    margin-top: auto;
+    background: var(--footer-bg);
+    color: var(--footer-fg);
+    --ornament: var(--color-gold-400);
+    --leaf: var(--color-leaf-300);
+  }
+  .site-footer .thoranam {
+    position: absolute;
+    top: 0;
+    inset-inline: 0;
+  }
+
+  .footer-main {
+    display: grid;
+    gap: 2.5rem;
+    padding-block: clamp(3.75rem, 3rem + 3vw, 5.5rem) clamp(2.5rem, 2rem + 2vw, 3.5rem);
+  }
+  @media (width >= 40rem) {
+    .footer-main {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (width >= 64rem) {
+    .footer-main {
+      grid-template-columns: 1.45fr 0.9fr 1.25fr 1fr;
+      gap: 3rem;
+    }
+  }
+
+  .footer-brand {
+    display: grid;
+    gap: 1rem;
+    align-content: start;
+  }
+  .footer-brand .brand {
+    color: var(--footer-fg);
+  }
+  .footer-brand .brand-tag {
+    display: block;
+    color: var(--footer-heading);
+  }
+  .footer-blurb {
+    color: var(--footer-muted);
+    font-size: var(--text-small);
+    max-width: 38ch;
+  }
+
+  .footer-heading {
+    margin-bottom: 1.1rem;
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--footer-heading);
+  }
+  .footer-heading::after {
+    content: "";
+    display: block;
+    width: 2.5rem;
+    height: 2px;
+    margin-top: 0.55rem;
+    background: linear-gradient(90deg, var(--ornament), transparent);
+  }
+  [dir="rtl"] .footer-heading::after {
+    background: linear-gradient(-90deg, var(--ornament), transparent);
+  }
+
+  .footer-links {
+    display: grid;
+    gap: 0.2rem;
+  }
+  .footer-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.5rem;
+    color: var(--footer-fg);
+    text-decoration: none;
+  }
+  .footer-links a .icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    color: var(--ornament);
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  .footer-links a:hover {
+    color: var(--color-gold-200);
+  }
+  .footer-links a:hover .icon {
+    transform: translateX(3px);
+  }
+  [dir="rtl"] .footer-links a .icon {
+    transform: scaleX(-1);
+  }
+  [dir="rtl"] .footer-links a:hover .icon {
+    transform: scaleX(-1) translateX(3px);
+  }
+  .footer-links a[aria-current="page"] {
+    color: var(--footer-heading);
+  }
+
+  .contact-list {
+    display: grid;
+    gap: 1rem;
+    font-size: var(--text-small);
+  }
+  .contact-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.8rem;
+    align-items: start;
+    color: var(--footer-muted);
+  }
+  .contact-item .contact-icon {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 999px;
+    border: 1px solid var(--footer-line);
+    color: var(--footer-heading);
+  }
+  .contact-item .contact-icon .icon {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+  .contact-item a {
+    color: var(--footer-fg);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .contact-item a:hover {
+    color: var(--color-gold-200);
+    text-decoration: underline;
+  }
+  .contact-label {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--footer-heading);
+  }
+
+  .social-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .social-link {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    border: 1px solid var(--footer-line);
+    color: var(--footer-fg);
+    transition:
+      background-color var(--duration-base) ease,
+      color var(--duration-base) ease,
+      border-color var(--duration-base) ease,
+      transform var(--duration-base) var(--ease-temple);
+  }
+  .social-link:hover {
+    background: var(--color-gold-300);
+    border-color: var(--color-gold-300);
+    color: var(--color-maroon-900);
+    transform: translateY(-2px);
+  }
+  .social-link .icon {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .site-footer :focus-visible {
+    outline-color: var(--color-gold-300);
+  }
+
+  .footer-bottom {
+    border-top: 1px solid var(--footer-line);
+  }
+  .footer-bottom-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem 1.5rem;
+    padding-block: 1.25rem;
+    font-size: 0.875rem;
+    color: var(--footer-muted);
+  }
+}

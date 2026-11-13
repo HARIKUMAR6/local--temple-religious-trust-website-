@@ -1,0 +1,66 @@
+<!-- Pooja 2 · Daily schedule -->
+<section id="schedule" class="section-y pt-schedule" aria-labelledby="schedule-title" data-pooja data-tz="{{site.home.timeZone}}">
+  <div class="container-temple">
+    <div class="hm-split-head">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Daily Schedule</p>
+        <h2 id="schedule-title">Today's worship at a glance</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-bell"/></svg></div>
+      </div>
+      <p class="hm-lead" data-reveal style="--reveal-delay:100ms">One schedule for every day. Tap a row for what the temple office will confirm.</p>
+    </div>
+
+    <div class="pt-sched-grid">
+    <figure class="pt-sched-photo hm-zoom" data-reveal="zoom">
+      <img src="assets/img/pages3/pooja-schedule-1400.jpg" srcset="assets/img/pages3/pooja-schedule-800.jpg 800w, assets/img/pages3/pooja-schedule-1400.jpg 1400w" sizes="(min-width: 64rem) 340px, 100vw" loading="lazy" decoding="async" alt="A long lattice wall of lamp niches around a Kerala temple, glowing in warm light">
+    </figure>
+    <div class="pt-sched-main">
+    {{#if site.poojaPage.announcement}}
+    <div class="pt-announce" role="status" data-reveal>
+      <span class="pt-announce-icon" aria-hidden="true"><svg class="icon"><use href="#i-bell"/></svg></span>
+      <div class="pt-announce-text"><strong>Timings to be announced</strong><p>{{site.poojaPage.announcement}}</p></div>
+      <div class="pt-announce-actions">
+        <a class="btn btn-primary btn-sm" href="tel:{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call</a>
+        <a class="btn btn-outline btn-sm" href="mailto:{{site.email}}?subject=Pooja%20timings"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Email</a>
+      </div>
+    </div>
+    {{/if}}
+
+    <div class="pt-controls" data-reveal>
+      <div class="hm2-chips" role="group" aria-label="Filter by time of day">
+        <button type="button" class="hm2-chip" data-filter="all" aria-pressed="true">All</button>
+        {{#each site.home.poojaSlots}}<button type="button" class="hm2-chip" data-filter="{{this.id}}" aria-pressed="false">{{this.period}}</button>{{/each}}
+      </div>
+      <button type="button" class="btn btn-outline btn-sm" data-print><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Print Schedule</button>
+    </div>
+    <p class="sr-only" role="status" aria-live="polite" data-pooja-status></p>
+
+    <ol class="pt-sched">
+      {{#each site.home.poojaSlots}}
+      <li class="pt-row" data-slot="{{this.id}}" data-start="{{this.start}}" data-end="{{this.end}}" data-reveal style="--reveal-delay:{{this.index}}00ms">
+        <div class="pt-row-main">
+          <span class="pt-row-icon" aria-hidden="true"><svg class="icon"><use href="#i-{{this.icon}}"/></svg></span>
+          <div class="pt-row-id">
+            <span class="pt-period">{{this.period}}</span>
+            <h3 class="hm-slot-name">{{this.name}}</h3>
+          </div>
+          <p class="pt-time"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{this.timeLabel}}</p>
+          <button type="button" class="btn btn-outline btn-sm pt-more" aria-expanded="false" aria-controls="slot-panel-{{this.id}}" data-slot-toggle><span class="pt-more-label">Details</span><svg class="icon" aria-hidden="true"><use href="#i-chevron-down"/></svg></button>
+        </div>
+        <p class="pt-row-detail">{{this.detail}}</p>
+        <div class="pt-row-panel" id="slot-panel-{{this.id}}" hidden>
+          <p><strong>What the temple office will confirm</strong></p>
+          <ul>
+            <li>The exact start and end time</li>
+            <li>The rituals performed</li>
+            <li>Whether devotees may take part or make offerings</li>
+          </ul>
+        </div>
+      </li>
+      {{/each}}
+    </ol>
+    {{#if site.poojaPage.lastUpdated}}<p class="pt-updated"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Last updated: {{site.poojaPage.lastUpdated}}</p>{{/if}}
+    </div>
+    </div>
+  </div>
+</section>

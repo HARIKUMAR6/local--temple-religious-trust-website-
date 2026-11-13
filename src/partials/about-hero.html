@@ -1,0 +1,27 @@
+<!-- About 1 · Hero (title above a framed panoramic photograph) -->
+<section id="top" class="hero-shell ab-hero" aria-labelledby="hero-title">
+  <div class="container-temple ab-hero-inner">
+    <div class="ab-hero-head">
+      <nav class="breadcrumb ab-crumb" aria-label="Breadcrumb" data-reveal>
+        <ol>
+          <li><a href="index.html">Home</a></li>
+          <li aria-hidden="true"><svg class="icon icon-dir"><use href="#i-chevron-right"/></svg></li>
+          <li><span aria-current="page">About</span></li>
+        </ol>
+      </nav>
+      <div class="ab-hero-titles">
+        <p class="text-eyebrow-style" data-reveal>About the Temple</p>
+        <h1 id="hero-title" data-reveal style="--reveal-delay:80ms">About {{site.templeName}}</h1>
+      </div>
+      <p class="ab-hero-lead" data-reveal style="--reveal-delay:160ms">A place of worship dedicated to {{site.deity}}, cared for by {{site.trustName}}.</p>
+    </div>
+    <figure class="ab-hero-photo hm-zoom" data-reveal="zoom">
+      <img
+        src="assets/img/pages/about-hero-1800.jpg"
+        srcset="assets/img/pages/about-hero-960.jpg 960w, assets/img/pages/about-hero-1800.jpg 1800w"
+        sizes="(min-width: 80rem) 1200px, 100vw"
+        width="1800" height="1239" fetchpriority="high" decoding="async"
+        alt="A round-roofed Kerala temple with red and blue banded walls beneath a bright blue sky">
+    </figure>
+  </div>
+</section>

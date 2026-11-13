@@ -1,0 +1,41 @@
+<!-- Pooja 5 · Festival & occasion pooja information (date-badge list) -->
+<section id="occasions" class="section-y pt-occasions" aria-labelledby="occasions-title">
+  <div class="container-temple">
+    <div class="hm-split-head">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Festivals &amp; Occasions</p>
+        <h2 id="occasions-title">When the schedule changes</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-calendar"/></svg></div>
+      </div>
+      <p class="hm-lead" data-reveal style="--reveal-delay:100ms">{{site.poojaPage.occasionNote}} The occasions below are indicative until the Trust confirms them.</p>
+    </div>
+
+    <ol class="pt-occ-list">
+      {{#each site.home.festivals}}
+      <li>
+        <article class="pt-occ" id="festival-{{this.id}}" data-festival="{{this.id}}" data-name="{{this.name}}" data-iso="{{this.isoDate}}" aria-labelledby="festival-{{this.id}}-title" data-reveal style="--reveal-delay:{{this.index}}00ms">
+          <div class="pt-occ-date" aria-hidden="true"><svg class="icon"><use href="#i-calendar"/></svg><span>Date<br>TBA</span></div>
+          <figure class="pt-occ-photo hm-zoom"><img src="assets/img/home/{{this.image}}-1280.jpg" srcset="assets/img/home/{{this.image}}-640.jpg 640w, assets/img/home/{{this.image}}-1280.jpg 1280w" sizes="(min-width: 64rem) 260px, 100vw" loading="lazy" decoding="async" alt="{{this.imageAlt}}"></figure>
+          <div class="pt-occ-body">
+            <p class="pt-period">{{this.kind}}</p>
+            <h3 id="festival-{{this.id}}-title">{{this.name}}</h3>
+            <p class="pt-occ-summary">{{this.summary}}</p>
+            <p class="pt-occ-meta"><span><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{this.dateLabel}}</span><span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{this.timeLabel}}</span></p>
+            <div class="hm2-fest-actions pt-occ-actions">
+              <button type="button" class="btn btn-primary btn-sm" aria-expanded="false" aria-controls="festival-{{this.id}}-panel" data-fest-toggle><span data-label>Details</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+              <button type="button" class="btn btn-outline btn-sm" data-share><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Share</button>
+              {{#if this.isoDate}}<button type="button" class="btn btn-outline btn-sm" data-ics><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Add to calendar</button>{{/if}}
+              <a class="btn btn-outline btn-sm" href="contact.html?topic=festival-{{this.id}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Enquire</a>
+            </div>
+            <div class="hm2-fest-panel" id="festival-{{this.id}}-panel" hidden>
+              <p><strong>About this occasion</strong><br>{{this.about}}</p>
+              <p><strong>How to take part</strong><br>{{this.participation}}</p>
+            </div>
+            <p class="hm-status" role="status" aria-live="polite" data-status></p>
+          </div>
+        </article>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>

@@ -1,0 +1,32 @@
+{
+  "name": "temple-trust-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Temple & Religious Trust website — Phase 1 foundation (HTML5 + Tailwind CSS v4 CLI + vanilla JS)",
+  "type": "module",
+  "scripts": {
+    "build:html": "node scripts/build-html.mjs",
+    "build:css": "node ./node_modules/@tailwindcss/cli/dist/index.mjs -i ./src/css/main.css -o ./dist/assets/css/main.css --minify",
+    "build": "node scripts/build-html.mjs && node ./node_modules/@tailwindcss/cli/dist/index.mjs -i ./src/css/main.css -o ./dist/assets/css/main.css --minify",
+    "watch:css": "node ./node_modules/@tailwindcss/cli/dist/index.mjs -i ./src/css/main.css -o ./dist/assets/css/main.css --watch",
+    "serve": "node scripts/serve.mjs",
+    "dev": "node scripts/dev.mjs",
+    "qa": "node scripts/qa.mjs",
+    "qa:home1": "node scripts/qa-home1.mjs",
+    "qa:home2": "node scripts/qa-home2.mjs",
+    "qa:inner": "node scripts/qa-inner.mjs",
+    "qa:donate-contact": "node scripts/qa-donate-contact.mjs",
+    "qa:visuals": "node scripts/qa-visuals.mjs"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
+    "@fontsource/marcellus": "^5.3.0",
+    "@fontsource/mukta": "^5.3.0",
+    "@tailwindcss/cli": "^4.3.5",
+    "playwright": "^1.65.0",
+    "tailwindcss": "^4.3.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

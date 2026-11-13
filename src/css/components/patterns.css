@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Signature patterns (original artwork, drawn as CSS masks so they recolour
+   per theme through tokens):
+   • Kolam lattice  — curved diamonds weaving around a dot grid
+   • Thoranam       — a string of hanging mango leaves with marigold beads
+   • Ornament rule  — gold rule with a centre medallion for headings
+   • Gopuram step   — stepped tier silhouette used as an edge
+   ========================================================================== */
+
+@layer components {
+  /* Kolam lattice ───────────────────────────────────────────────────── */
+  .bg-kolam {
+    position: relative;
+    isolation: isolate;
+  }
+  .bg-kolam::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-color: var(--pattern);
+    -webkit-mask: var(--kolam-mask) repeat;
+    mask: var(--kolam-mask) repeat;
+    -webkit-mask-size: 44px 44px;
+    mask-size: 44px 44px;
+    --kolam-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Cg fill='none' stroke='%23000' stroke-width='1.1'%3E%3Cpath d='M22 3Q31 13 41 22Q31 31 22 41Q13 31 3 22Q13 13 22 3Z'/%3E%3C/g%3E%3Cg fill='%23000'%3E%3Ccircle cx='22' cy='22' r='1.7'/%3E%3Ccircle cx='0' cy='0' r='1.7'/%3E%3Ccircle cx='44' cy='0' r='1.7'/%3E%3Ccircle cx='0' cy='44' r='1.7'/%3E%3Ccircle cx='44' cy='44' r='1.7'/%3E%3C/g%3E%3C/svg%3E");
+  }
+  /* Fade the lattice towards the inline-end for a softer edge */
+  .bg-kolam.is-faded::before {
+    -webkit-mask-image: var(--kolam-mask), linear-gradient(to bottom, #000 30%, transparent);
+    mask-image: var(--kolam-mask), linear-gradient(to bottom, #000 30%, transparent);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
+    -webkit-mask-repeat: repeat, no-repeat;
+    mask-repeat: repeat, no-repeat;
+    -webkit-mask-size: 44px 44px, 100% 100%;
+    mask-size: 44px 44px, 100% 100%;
+  }
+
+  /* Thoranam ───────────────────────────────────────────────────────── */
+  .thoranam {
+    position: relative;
+    height: 26px;
+    pointer-events: none;
+  }
+  .thoranam::before {
+    /* the cord */
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 2px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--ornament) 6%, var(--ornament) 94%, transparent);
+  }
+  .thoranam::after {
+    /* leaves + beads */
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    top: 3px;
+    height: 23px;
+    background-color: var(--leaf);
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 23'%3E%3Cpath d='M8 0C12.6 4 13 11 8 22C3 11 3.4 4 8 0Z'/%3E%3Ccircle cx='24' cy='4.5' r='3'/%3E%3C/svg%3E") repeat-x center top / 32px 23px;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 23'%3E%3Cpath d='M8 0C12.6 4 13 11 8 22C3 11 3.4 4 8 0Z'/%3E%3Ccircle cx='24' cy='4.5' r='3'/%3E%3C/svg%3E") repeat-x center top / 32px 23px;
+  }
+  .thoranam.is-gold::after {
+    background-color: var(--ornament);
+  }
+
+  /* Ornament rule ──────────────────────────────────────────────────── */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--ornament);
+    width: min(100%, 15rem);
+  }
+  .ornament::before,
+  .ornament::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, currentColor);
+  }
+  .ornament::after {
+    background: linear-gradient(90deg, currentColor, transparent);
+  }
+  .ornament.is-start::before {
+    display: none;
+  }
+  .ornament .icon {
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+
+  /* Gopuram step edge (apply to a block to give it a tiered top) ───── */
+  .edge-gopuram {
+    --step: 7px;
+    --tier: 22px;
+    clip-path: polygon(
+      0 calc(var(--step) * 3),
+      calc(50% - var(--tier) * 3) calc(var(--step) * 3),
+      calc(50% - var(--tier) * 3) calc(var(--step) * 2),
+      calc(50% - var(--tier) * 2) calc(var(--step) * 2),
+      calc(50% - var(--tier) * 2) var(--step),
+      calc(50% - var(--tier)) var(--step),
+      calc(50% - var(--tier)) 0,
+      calc(50% + var(--tier)) 0,
+      calc(50% + var(--tier)) var(--step),
+      calc(50% + var(--tier) * 2) var(--step),
+      calc(50% + var(--tier) * 2) calc(var(--step) * 2),
+      calc(50% + var(--tier) * 3) calc(var(--step) * 2),
+      calc(50% + var(--tier) * 3) calc(var(--step) * 3),
+      100% calc(var(--step) * 3),
+      100% 100%,
+      0 100%
+    );
+  }
+
+  /* Medallion: round icon holder with a double gold ring */
+  .medallion {
+    display: inline-grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 999px;
+    color: var(--accent);
+    background: var(--surface-alt);
+    box-shadow:
+      0 0 0 1px var(--ornament),
+      0 0 0 5px var(--surface-raised),
+      0 0 0 6px color-mix(in srgb, var(--ornament) 45%, transparent);
+  }
+  .medallion .icon {
+    width: 1.625rem;
+    height: 1.625rem;
+  }
+}

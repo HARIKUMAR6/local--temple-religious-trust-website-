@@ -1,0 +1,260 @@
+/* ==========================================================================
+   Header, brand & desktop navigation
+   Breakpoint: < 1024px = mobile/tablet (logo + menu button only)
+   ========================================================================== */
+
+@layer components {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--surface-glass);
+    -webkit-backdrop-filter: saturate(1.4) blur(10px);
+    backdrop-filter: saturate(1.4) blur(10px);
+    border-bottom: 1px solid var(--border);
+    transition:
+      box-shadow var(--duration-base) ease,
+      background-color var(--duration-base) ease;
+  }
+  /* kumkum–chandan band along the very top */
+  .site-header::before {
+    content: "";
+    display: block;
+    height: 4px;
+    background: linear-gradient(
+      90deg,
+      var(--color-maroon-700) 0 calc(50% - 3rem),
+      var(--color-gold-400) calc(50% - 3rem) calc(50% + 3rem),
+      var(--color-maroon-700) calc(50% + 3rem) 100%
+    );
+  }
+  .site-header.is-scrolled {
+    box-shadow: var(--shadow-soft);
+  }
+
+  .header-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    min-height: var(--header-h);
+    transition: min-height var(--duration-base) var(--ease-temple);
+  }
+  .is-scrolled .header-bar {
+    min-height: 4rem;
+  }
+
+  /* Brand ─────────────────────────────────────────────────────────── */
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-width: 0;
+    color: var(--heading);
+    text-decoration: none;
+  }
+  .brand:hover {
+    color: var(--heading);
+  }
+  .brand .emblem {
+    width: 3rem;
+    height: 3rem;
+    transition: transform 600ms var(--ease-temple);
+  }
+  .brand:hover .emblem {
+    transform: rotate(-8deg) scale(1.04);
+  }
+  .brand-text {
+    display: grid;
+    min-width: 0;
+    line-height: 1.1;
+  }
+  .brand-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .brand-tag {
+    margin-top: 0.2rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Emblem colours (inline SVG) */
+  .emblem .e-ring {
+    fill: var(--color-gold-500);
+  }
+  .emblem .e-disc {
+    fill: var(--color-maroon-700);
+  }
+  .emblem .e-tower {
+    fill: var(--color-ivory-100);
+  }
+  .emblem .e-door {
+    fill: var(--color-maroon-800);
+  }
+  .emblem .e-crown {
+    fill: var(--color-gold-300);
+  }
+  .emblem .e-line {
+    fill: none;
+    stroke: var(--color-gold-500);
+    stroke-width: 0.9;
+  }
+
+  /* Desktop nav ─────────────────────────────────────────────────── */
+  .nav-desktop {
+    display: none;
+  }
+  .header-actions {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+    align-items: center;
+    gap: 0.125rem;
+  }
+  .nav-link {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    min-height: 2.75rem;
+    padding: 0.4rem 0.7rem 0.3rem;
+    border: 0;
+    background: none;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.98rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color var(--duration-base) ease;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0.7rem;
+    bottom: 0.3rem;
+    height: 2px;
+    background: var(--ornament);
+    transform: scaleX(0);
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  .nav-link:hover {
+    color: var(--accent);
+  }
+  .nav-link:hover::after,
+  .nav-link[aria-current="page"]::after,
+  .nav-link[data-current="true"]::after,
+  .nav-link[aria-expanded="true"]::after {
+    transform: scaleX(1);
+  }
+  .nav-link[aria-current="page"],
+  .nav-link[data-current="true"] {
+    color: var(--accent);
+  }
+  .nav-link .chevron {
+    width: 1rem;
+    height: 1rem;
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  .nav-link[aria-expanded="true"] .chevron {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown (click-only; no :hover / :focus-within rules by design) */
+  .has-dropdown {
+    position: relative;
+  }
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 0.6rem);
+    inset-inline-start: 0;
+    z-index: 50;
+    min-width: 13rem;
+    padding: 0.5rem;
+    border: 1px solid var(--border);
+    border-top: 3px solid var(--ornament);
+    border-radius: 0 0 var(--radius-panel) var(--radius-panel);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-lift);
+    animation: dropdown-in 200ms var(--ease-temple);
+  }
+  .dropdown-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.7rem 0.85rem 0.6rem;
+    border-radius: var(--radius-chip);
+    color: var(--text);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .dropdown-link .icon {
+    color: var(--ornament);
+  }
+  .dropdown-link:hover,
+  .dropdown-link:focus-visible {
+    background: var(--surface-alt);
+    color: var(--accent);
+  }
+  .dropdown-link[aria-current="page"] {
+    color: var(--accent);
+    font-weight: 700;
+    background: var(--surface-alt);
+  }
+
+  .menu-toggle {
+    display: inline-grid;
+  }
+
+  /* Very narrow phones: drop the tagline instead of truncating it */
+  @media (width < 22.5rem) {
+    .header-bar .brand-tag,
+    .mobile-menu-head .brand-tag {
+      display: none;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .nav-desktop {
+      display: block;
+    }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .menu-toggle {
+      display: none;
+    }
+    .brand-tag {
+      display: none;
+    }
+  }
+  @media (width >= 80rem) {
+    .brand-tag {
+      display: block;
+    }
+    .nav-list {
+      gap: 0.375rem;
+    }
+  }
+}
+
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}

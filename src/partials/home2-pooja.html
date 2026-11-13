@@ -1,0 +1,33 @@
+<!-- 3 · Daily pooja timings (vertical timeline) -->
+<section id="pooja" class="section-y hm2-pooja" aria-labelledby="pooja-title" data-pooja data-tz="{{site.home.timeZone}}">
+  <div class="container-temple hm2-pooja-grid">
+    <div class="hm2-pooja-aside">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Daily Pooja Timings</p>
+        <h2 id="pooja-title">The day, hour by hour</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-bell"/></svg></div>
+        <p class="hm-lead">Worship moves from dawn to night. Confirmed rituals and timings will be published by the temple office.</p>
+      </div>
+      <div class="hm2-chips" role="group" aria-label="Filter by time of day" data-reveal>
+        <button type="button" class="hm2-chip" data-filter="all" aria-pressed="true">All</button>
+        {{#each site.home.poojaSlots}}<button type="button" class="hm2-chip" data-filter="{{this.id}}" aria-pressed="false">{{this.period}}</button>{{/each}}
+      </div>
+      <p class="sr-only" role="status" aria-live="polite" data-pooja-status></p>
+      <a class="btn btn-primary" href="pooja-timings.html" data-reveal>Full Pooja Timings<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
+
+    <ol class="hm2-timeline">
+      {{#each site.home.poojaSlots}}
+      <li class="hm2-slot" data-slot="{{this.id}}" data-start="{{this.start}}" data-end="{{this.end}}" data-reveal style="--reveal-delay:{{this.index}}00ms">
+        <span class="hm2-slot-dot" aria-hidden="true"><svg class="icon"><use href="#i-{{this.icon}}"/></svg></span>
+        <button type="button" class="hm2-slot-btn" aria-expanded="false" aria-controls="slot-panel-{{this.id}}" data-slot-toggle>
+          <span class="hm2-slot-time">{{this.timeLabel}}</span>
+          <span class="hm2-slot-id"><span class="hm2-slot-period">{{this.period}}</span><span class="hm-slot-name">{{this.name}}</span></span>
+          <svg class="icon hm2-slot-chev" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+        </button>
+        <div class="hm2-slot-panel" id="slot-panel-{{this.id}}" hidden><p>{{this.detail}}</p></div>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>

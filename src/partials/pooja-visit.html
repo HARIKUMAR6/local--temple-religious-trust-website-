@@ -1,0 +1,24 @@
+<!-- Pooja 6 · Visit / enquiry CTA (contact strip) -->
+<section id="visit" class="pt-visit" aria-labelledby="visit-title">
+  <div class="container-temple pt-visit-grid">
+    <figure class="pt-visit-photo hm-zoom" data-reveal="zoom">
+      <img src="assets/img/pages3/pooja-visit-1400.jpg" srcset="assets/img/pages3/pooja-visit-800.jpg 800w, assets/img/pages3/pooja-visit-1400.jpg 1400w" sizes="(min-width: 64rem) 420px, 100vw" loading="lazy" decoding="async" alt="A yellow temple entrance gate with a two-tier tiled roof">
+    </figure>
+    <div class="pt-visit-main">
+    <div class="pt-visit-copy">
+      <p class="pt-visit-eyebrow" data-reveal>Before you travel</p>
+      <h2 id="visit-title" data-reveal style="--reveal-delay:80ms">Confirm the timings with the temple office</h2>
+      <p class="pt-visit-lead" data-reveal style="--reveal-delay:140ms">Timings can change, especially on festival days. The temple office can tell you what is planned for the day you wish to visit.</p>
+    </div>
+    <div class="pt-visit-contact" data-reveal style="--reveal-delay:200ms">
+      <a class="pt-phone" href="tel:{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>{{site.phone.display}}</span></a>
+      <p class="pt-visit-line"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{site.officeHours}}</p>
+      <p class="pt-visit-line"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>{{site.address.line1}}, {{site.address.city}}</p>
+      <div class="hm-cta-row hm2-cta-start">
+        <a class="btn btn-gold btn-lg" href="contact.html"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Plan Your Visit</a>
+        <a class="btn btn-on-dark btn-lg" href="mailto:{{site.email}}?subject=Pooja%20timings"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Email the Office</a>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>

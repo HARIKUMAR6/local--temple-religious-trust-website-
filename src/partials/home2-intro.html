@@ -1,0 +1,33 @@
+<!-- 1 · Temple introduction (editorial split hero) -->
+<section id="top" class="hero-shell hm2-hero" aria-labelledby="hero-title">
+  <div class="container-temple hm2-hero-grid">
+    <div class="hm2-hero-copy">
+      <p class="hm2-eyebrow" data-reveal><span class="hm2-rule" aria-hidden="true"></span>Dedicated to {{site.deity}}</p>
+      <h1 id="hero-title" data-reveal style="--reveal-delay:80ms">{{site.templeName}}</h1>
+      <p class="hm2-tagline" data-reveal style="--reveal-delay:130ms">{{site.tagline}}</p>
+      <p class="hm2-lead" data-reveal style="--reveal-delay:180ms">Come with a quiet mind. Worship, light a lamp and share in the life of the temple, together with a devoted community.</p>
+      <div class="hm-cta-row hm2-cta-start" data-reveal style="--reveal-delay:250ms">
+        <a class="btn btn-primary btn-lg" href="contact.html"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Plan Your Visit</a>
+        <a class="btn btn-outline btn-lg" href="pooja-timings.html"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Pooja Timings</a>
+      </div>
+      <ul class="hm2-jump" aria-label="Explore this page" data-reveal style="--reveal-delay:320ms">
+        <li><a href="#pooja">Daily pooja</a></li>
+        <li><a href="#festivals">Festivals</a></li>
+        <li><a href="#sevas">Sevas</a></li>
+        <li><a href="donations.html">Donations</a></li>
+      </ul>
+    </div>
+
+    <div class="hm2-hero-media" data-reveal="zoom">
+      <figure class="hm2-hero-photo edge-gopuram hm-zoom">
+        <img
+          src="assets/img/home2/hero-1400.jpg"
+          srcset="assets/img/home2/hero-800.jpg 800w, assets/img/home2/hero-1400.jpg 1400w"
+          sizes="(min-width: 64rem) 560px, 92vw"
+          width="1400" height="1049" fetchpriority="high" decoding="async"
+          alt="Ancient carved stone temple with a tiered tower and a saffron flag against a clear blue sky">
+      </figure>
+      <p class="hm2-place"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg><span>{{site.address.city}}, {{site.address.state}}</span></p>
+    </div>
+  </div>
+</section>

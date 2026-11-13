@@ -1,0 +1,34 @@
+<!-- 6 · Donations & temple support (ledger beside photograph) -->
+<section id="support" class="section-y hm2-support" aria-labelledby="support-title">
+  <div class="container-temple hm2-support-grid">
+    <div class="hm2-support-copy">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Donations &amp; Temple Support</p>
+        <h2 id="support-title">Sustain what sustains us</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-heart-hand"/></svg></div>
+        <p class="hm-lead">Temples are kept alive by the generosity of their devotees. Here is where support is usually needed.</p>
+      </div>
+      <ul class="hm2-ledger">
+        {{#each site.home.donationPurposes}}
+        <li data-reveal style="--reveal-delay:{{this.index}}00ms">
+          <span class="hm2-ledger-icon" aria-hidden="true"><svg class="icon"><use href="#i-{{this.icon}}"/></svg></span>
+          <div><h3>{{this.title}}</h3><p>{{this.text}}</p></div>
+        </li>
+        {{/each}}
+      </ul>
+      <p class="hm2-note" data-reveal>Official donation details and accepted methods will be published here only after the Trust has verified them.</p>
+      <div class="hm-cta-row hm2-cta-start" data-reveal>
+        <a class="btn btn-primary btn-lg" href="donations.html"><svg class="icon" aria-hidden="true"><use href="#i-heart-hand"/></svg>{{site.donateLabel}}</a>
+        <a class="btn btn-outline btn-lg" href="contact.html">Ask the Temple Office</a>
+      </div>
+    </div>
+    <figure class="hm2-support-photo hm-zoom" data-reveal="zoom">
+      <img
+        src="assets/img/home2/donate-1400.jpg"
+        srcset="assets/img/home2/donate-800.jpg 800w, assets/img/home2/donate-1400.jpg 1400w"
+        sizes="(min-width: 64rem) 520px, 100vw"
+        loading="lazy" decoding="async"
+        alt="A small ancient temple with a carved brick tower standing in an open field">
+    </figure>
+  </div>
+</section>

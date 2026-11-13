@@ -1,0 +1,542 @@
+{
+  "_note": "Single source of truth for temple details. Replace every placeholder with verified information from the Trust before launch. Leave a social URL empty (\"\") to hide its icon.",
+  "templeName": "Temple Name",
+  "templeShortName": "Temple",
+  "trustName": "Temple Trust Name",
+  "tagline": "Devotion · Service · Heritage",
+  "deity": "Presiding Deity",
+  "trustRegistration": "Registration details to be confirmed",
+  "aboutBlurb": "Official website of the Temple Trust. Verified details about the temple, its deity and its services will be published here by the Trust.",
+  "address": {
+    "line1": "Street address",
+    "line2": "Town / Village",
+    "city": "City",
+    "state": "State",
+    "postalCode": "000000",
+    "country": "India",
+    "mapUrl": ""
+  },
+  "phone": {
+    "display": "+91 00000 00000",
+    "href": "+910000000000"
+  },
+  "email": "info@example.org",
+  "officeHours": "Office hours to be announced",
+  "socials": {
+    "facebook": "https://facebook.com/",
+    "instagram": "https://instagram.com/",
+    "youtube": "https://youtube.com/",
+    "x": "https://x.com/",
+    "whatsapp": ""
+  },
+  "siteUrl": "https://example.org",
+  "themeColor": "#6B1424",
+  "donateLabel": "Donate",
+  "home": {
+    "_note": "Home 1 content. Every timing, date, festival, seva and donation purpose below is an UNCONFIRMED placeholder. Replace with details verified by the Trust. Leave start/end/isoDate empty until a real value is confirmed; the page then shows 'to be announced'. Photographs live in src/assets/img/home/ — replace them with the temple's own photographs (same file names) before launch. timeZone (e.g. \"Asia/Kolkata\") enables the live Now/Next highlight in the pooja schedule, but only when start/end times are also filled in. image2/imageAlt2 are the photographs used by Home 2 (src/assets/img/home2/).",
+    "timeZone": "",
+    "poojaSlots": [
+      {
+        "id": "morning",
+        "period": "Morning",
+        "name": "Morning Pooja",
+        "icon": "sunrise",
+        "timeLabel": "Timing to be announced",
+        "start": "",
+        "end": "",
+        "detail": "The first worship of the day, when the sanctum is opened and the day's offerings begin. The temple office will confirm the exact ritual and timing."
+      },
+      {
+        "id": "midday",
+        "period": "Midday",
+        "name": "Midday Pooja",
+        "icon": "sun",
+        "timeLabel": "Timing to be announced",
+        "start": "",
+        "end": "",
+        "detail": "A midday worship with offerings to the deity. The temple office will confirm the exact ritual and timing."
+      },
+      {
+        "id": "evening",
+        "period": "Evening",
+        "name": "Evening Pooja",
+        "icon": "lamp",
+        "timeLabel": "Timing to be announced",
+        "start": "",
+        "end": "",
+        "detail": "Evening worship with lamps, often the most attended of the day. The temple office will confirm the exact ritual and timing."
+      },
+      {
+        "id": "night",
+        "period": "Night",
+        "name": "Night Pooja",
+        "icon": "moon",
+        "timeLabel": "Timing to be announced",
+        "start": "",
+        "end": "",
+        "detail": "The closing worship of the day before the sanctum is closed. The temple office will confirm the exact ritual and timing."
+      }
+    ],
+    "festivals": [
+      {
+        "id": "ratha",
+        "name": "Rathotsavam",
+        "kind": "Temple Car Festival",
+        "dateLabel": "Date to be announced",
+        "isoDate": "",
+        "timeLabel": "Timings to be announced",
+        "summary": "A festival procession in which the deity is taken through the streets on a decorated temple car, drawn by devotees.",
+        "about": "In many South Indian temples, a Rathotsavam is the high point of the festival season, with the deity drawn through the streets on a decorated car. Whether and when this temple observes it will be confirmed by the Trust.",
+        "participation": "Participation and darshan arrangements will be shared by the temple office.",
+        "image": "festival-car",
+        "imageAlt": "Crowds of devotees gathered around a decorated temple car during a festival procession",
+        "image2": "f-ratha",
+        "imageAlt2": "Caparisoned elephants with golden face ornaments and red umbrellas in a festival procession"
+      },
+      {
+        "id": "utsavam",
+        "name": "Annual Utsavam",
+        "kind": "Annual Temple Festival",
+        "dateLabel": "Dates to be announced",
+        "isoDate": "",
+        "timeLabel": "Timings to be announced",
+        "summary": "A multi-day annual celebration with special worship, processions and community gatherings around the temple.",
+        "about": "An annual utsavam is usually spread over several days, with special rituals, processions and gatherings. The festival programme for this temple will be published once the Trust confirms it.",
+        "participation": "Volunteering and offering details will be shared by the temple office.",
+        "image": "festival-town",
+        "imageAlt": "A festival day outside a South Indian temple, with a tall gopuram and crowds of visitors in colourful clothes",
+        "image2": "f-utsavam",
+        "imageAlt2": "A crowd gathered around decorated elephants during a temple festival"
+      },
+      {
+        "id": "kolam",
+        "name": "Festive Kolam and Decoration",
+        "kind": "Festival Celebration",
+        "dateLabel": "Dates to be announced",
+        "isoDate": "",
+        "timeLabel": "Timings to be announced",
+        "summary": "Colourful kolam, flowers and lamps that adorn the temple and its surroundings on festive days.",
+        "about": "Kolam, floral garlands and rows of lamps are a common part of festive days at South Indian temples. The occasions the temple decorates for will be confirmed by the Trust.",
+        "participation": "Details on helping with decorations will be shared by the temple office.",
+        "image": "festival-kolam",
+        "imageAlt": "A large circular floral rangoli in bright colours laid out on the floor for a festival",
+        "image2": "f-kolam",
+        "imageAlt2": "A brass temple panel with a row of oil lamps and auspicious animals"
+      }
+    ],
+    "sevas": [
+      {
+        "id": "archana",
+        "name": "Archana",
+        "summary": "A personal offering of prayers and the recitation of the deity's names on behalf of a devotee or family."
+      },
+      {
+        "id": "abhishekam",
+        "name": "Abhishekam",
+        "summary": "A ritual bathing of the deity with sacred offerings, sponsored by devotees on special occasions."
+      },
+      {
+        "id": "alankaram",
+        "name": "Alankaram",
+        "summary": "Special adornment of the deity with flowers, garlands and ornaments."
+      },
+      {
+        "id": "deepam",
+        "name": "Lamp Offering",
+        "summary": "Lighting lamps in the temple as an act of devotion, for a loved one or a special intention."
+      },
+      {
+        "id": "annadanam",
+        "name": "Annadanam",
+        "summary": "Sponsoring a meal offered to devotees, a long-standing act of service at temples."
+      }
+    ],
+    "donationPurposes": [
+      {
+        "icon": "lamp",
+        "title": "Daily worship",
+        "text": "Oil, flowers and offerings that keep the daily pooja going."
+      },
+      {
+        "icon": "bowl",
+        "title": "Annadanam",
+        "text": "Meals offered to devotees and visitors."
+      },
+      {
+        "icon": "wrench",
+        "title": "Temple upkeep",
+        "text": "Care and preservation of the temple building and its grounds."
+      },
+      {
+        "icon": "users",
+        "title": "Festivals and community",
+        "text": "Festival arrangements and community service."
+      }
+    ]
+  },
+  "about": {
+    "_note": "About page content. Items marked 'to be confirmed' are placeholders: replace them with details verified by the Trust. Sacred-space entries are general descriptions of South Indian temple architecture, not claims about this temple.",
+    "pendingNote": "The temple's own history, traditions and architecture will be added here once they are verified by the Trust.",
+    "facts": [
+      {
+        "icon": "lotus",
+        "label": "Presiding deity",
+        "value": "",
+        "useDeity": true
+      },
+      {
+        "icon": "calendar",
+        "label": "Founded",
+        "value": "To be confirmed by the Trust"
+      },
+      {
+        "icon": "temple",
+        "label": "Temple tradition",
+        "value": "To be confirmed by the Trust"
+      },
+      {
+        "icon": "users",
+        "label": "Managed by",
+        "value": "",
+        "useTrust": true
+      }
+    ],
+    "history": [
+      {
+        "id": "origins",
+        "n": "I",
+        "title": "Origins",
+        "text": "How and when the temple was founded, and the people behind it.",
+        "status": "To be shared by the Trust"
+      },
+      {
+        "id": "growth",
+        "n": "II",
+        "title": "Growth and patronage",
+        "text": "How the temple grew over time and who supported it.",
+        "status": "To be shared by the Trust"
+      },
+      {
+        "id": "renewal",
+        "n": "III",
+        "title": "Restoration and renewal",
+        "text": "Care, repair and renewal work carried out over the years.",
+        "status": "To be shared by the Trust"
+      },
+      {
+        "id": "today",
+        "n": "IV",
+        "title": "The temple today",
+        "text": "The Trust's work and the life of the temple in the present day.",
+        "status": "To be shared by the Trust"
+      }
+    ],
+    "sacredSpaces": [
+      {
+        "id": "gopuram",
+        "name": "Gopuram",
+        "text": "The monumental gateway tower of a South Indian temple, often rising above the surrounding walls and richly decorated.",
+        "status": "Presence at this temple to be confirmed"
+      },
+      {
+        "id": "mandapam",
+        "name": "Mandapam",
+        "text": "A pillared hall where devotees gather, and where music, recitation and festival rituals are often held.",
+        "status": "Presence at this temple to be confirmed"
+      },
+      {
+        "id": "garbhagriha",
+        "name": "Garbhagriha",
+        "text": "The sanctum, the innermost shrine where the presiding deity is worshipped.",
+        "status": "Details of this temple's sanctum to be confirmed"
+      },
+      {
+        "id": "prakaram",
+        "name": "Prakaram",
+        "text": "The enclosed path around the sanctum, walked clockwise by devotees as an act of reverence.",
+        "status": "Presence at this temple to be confirmed"
+      },
+      {
+        "id": "theertham",
+        "name": "Temple tank",
+        "text": "A sacred water tank found at many South Indian temples, used for ritual purposes.",
+        "status": "Presence at this temple to be confirmed"
+      }
+    ],
+    "traditions": [
+      {
+        "icon": "lamp",
+        "title": "Daily worship",
+        "text": "Regular poojas through the day, with lamps, flowers and offerings."
+      },
+      {
+        "icon": "lotus",
+        "title": "Festivals",
+        "text": "Seasonal celebrations that bring the whole community together."
+      },
+      {
+        "icon": "bowl",
+        "title": "Annadanam",
+        "text": "The tradition of offering food to devotees and visitors."
+      },
+      {
+        "icon": "bell",
+        "title": "Music and learning",
+        "text": "Devotional music, recitation and teaching, where the temple offers them."
+      },
+      {
+        "icon": "users",
+        "title": "Volunteer service",
+        "text": "Devotees helping with the daily life and festivals of the temple."
+      }
+    ],
+    "traditionsNote": "Which of these the temple offers will be confirmed by the Trust."
+  },
+  "poojaPage": {
+    "_note": "Pooja Timings page content. Per-slot times come from home.poojaSlots (shared with the home pages). Clear 'announcement' to hide the banner once timings are confirmed. Fill 'lastUpdated' (e.g. a date) to show an updated-on line.",
+    "announcement": "The temple office has not yet published confirmed pooja timings. Please check back soon, or contact the office to ask.",
+    "lastUpdated": "",
+    "rituals": [
+      {
+        "id": "morning",
+        "label": "Morning",
+        "icon": "sunrise",
+        "art": "dawn",
+        "timeLabel": "Timing to be announced",
+        "intro": "The first worship of the day, when the sanctum is opened and the day's offerings begin.",
+        "img": "assets/img/pages3/ritual-morning-1000.jpg",
+        "imgSet": "assets/img/pages3/ritual-morning-640.jpg 640w, assets/img/pages3/ritual-morning-1000.jpg 1000w",
+        "alt": "A temple entrance shrine with a lamp stand, framed by dark wooden pillars"
+      },
+      {
+        "id": "midday",
+        "label": "Afternoon",
+        "icon": "sun",
+        "art": "noon",
+        "timeLabel": "Timing to be announced",
+        "intro": "A midday worship with offerings to the deity, in the quieter hours of the day.",
+        "img": "assets/img/pages3/ritual-midday-1000.jpg",
+        "imgSet": "assets/img/pages3/ritual-midday-640.jpg 640w, assets/img/pages3/ritual-midday-1000.jpg 1000w",
+        "alt": "A tiled-roof temple hall with a tall bell-frame tower beside it"
+      },
+      {
+        "id": "evening",
+        "label": "Evening",
+        "icon": "lamp",
+        "art": "dusk",
+        "timeLabel": "Timing to be announced",
+        "intro": "Evening worship with lamps, often the most attended of the day.",
+        "img": "assets/img/pages3/ritual-evening-1000.jpg",
+        "imgSet": "assets/img/pages3/ritual-evening-640.jpg 640w, assets/img/pages3/ritual-evening-1000.jpg 1000w",
+        "alt": "A long wall of lamp niches around a temple, seen across a green lawn"
+      },
+      {
+        "id": "night",
+        "label": "Night",
+        "icon": "moon",
+        "art": "night",
+        "timeLabel": "Timing to be announced",
+        "intro": "The closing worship of the day before the sanctum is closed.",
+        "img": "assets/img/pages3/ritual-night-1000.jpg",
+        "imgSet": "assets/img/pages3/ritual-night-640.jpg 640w, assets/img/pages3/ritual-night-1000.jpg 1000w",
+        "alt": "Tiled roofs and decorated gables of a Kerala temple complex"
+      }
+    ],
+    "occasionNote": "Timings on festival days can differ from the daily schedule. The temple office will announce any changes.",
+    "sevaNote": "Availability, the offering and how to book are confirmed by the temple office."
+  },
+  "donationsPage": {
+    "_note": "Donations page content. No bank, UPI, QR, gateway, tax or receipt details are published until the Trust verifies them: add them here only when confirmed. Clear 'status' once verified details are published.",
+    "status": "Official donation details have not been published yet. Please contact the Temple Office for verified details before making any contribution.",
+    "purposes": [
+      {
+        "icon": "lamp",
+        "title": "Daily worship",
+        "text": "Oil, flowers and offerings that keep the daily pooja going.",
+        "img": "assets/img/home/pooja-1600.jpg",
+        "imgSet": "assets/img/home/pooja-800.jpg 800w, assets/img/home/pooja-1600.jpg 1600w",
+        "alt": "A long wall of glowing oil lamps lit inside a temple corridor"
+      },
+      {
+        "icon": "bowl",
+        "title": "Annadanam",
+        "text": "Meals offered to devotees and visitors.",
+        "img": "assets/img/pages3/tile-food-1000.jpg",
+        "imgSet": "assets/img/pages3/tile-food-640.jpg 640w, assets/img/pages3/tile-food-1000.jpg 1000w",
+        "alt": "Volunteers serving food to people at a community meal distribution"
+      },
+      {
+        "icon": "wrench",
+        "title": "Temple upkeep",
+        "text": "Care and preservation of the temple building and its grounds.",
+        "img": "assets/img/pages3/tile-upkeep-1000.jpg",
+        "imgSet": "assets/img/pages3/tile-upkeep-640.jpg 640w, assets/img/pages3/tile-upkeep-1000.jpg 1000w",
+        "alt": "Carved stone pillars of an ancient temple being restored"
+      },
+      {
+        "icon": "users",
+        "title": "Festivals and community",
+        "text": "Festival arrangements and community service.",
+        "img": "assets/img/home2/f-utsavam-1100.jpg",
+        "imgSet": "assets/img/home2/f-utsavam-640.jpg 640w, assets/img/home2/f-utsavam-1100.jpg 1100w",
+        "alt": "A crowd gathered around decorated elephants during a temple festival"
+      },
+      {
+        "icon": "heart-hand",
+        "title": "Where it is needed most",
+        "text": "Contribute to the general needs of the temple and let the Trust direct it.",
+        "img": "assets/img/home2/donate-1400.jpg",
+        "imgSet": "assets/img/home2/donate-800.jpg 800w, assets/img/home2/donate-1400.jpg 1400w",
+        "alt": "A small ancient temple with a carved brick tower standing in an open field"
+      }
+    ],
+    "ways": [
+      {
+        "n": "1",
+        "title": "Contribute through the Temple Office",
+        "text": "Ask the office for the verified ways to give.",
+        "href": "contact.html?topic=donation",
+        "label": "Ask about contributing",
+        "img": "assets/img/home/donate-1600.jpg",
+        "imgSet": "assets/img/home/donate-800.jpg 800w, assets/img/home/donate-1600.jpg 1600w",
+        "alt": "A pillared stone mandapam beside a temple, with the colourful gopuram rising behind it"
+      },
+      {
+        "n": "2",
+        "title": "Sponsor a seva or annadanam",
+        "text": "Offer a worship or a meal in the name of your family.",
+        "href": "pooja-timings.html#sevas",
+        "label": "See the sevas",
+        "img": "assets/img/pages3/way-2-1000.jpg",
+        "imgSet": "assets/img/pages3/way-2-640.jpg 640w, assets/img/pages3/way-2-1000.jpg 1000w",
+        "alt": "A plate of kheer, a traditional sweet offering"
+      },
+      {
+        "n": "3",
+        "title": "Volunteer your time",
+        "text": "Help with upkeep, festivals and community service, where the temple welcomes it.",
+        "href": "contact.html?topic=volunteer",
+        "label": "Offer to volunteer",
+        "img": "assets/img/pages3/way-3-1000.jpg",
+        "imgSet": "assets/img/pages3/way-3-640.jpg 640w, assets/img/pages3/way-3-1000.jpg 1000w",
+        "alt": "A carved stone doorway of an old temple under restoration"
+      },
+      {
+        "n": "4",
+        "title": "Learn about the temple",
+        "text": "Share the temple's story with family and friends.",
+        "href": "about.html",
+        "label": "About the temple",
+        "img": "assets/img/home/about-1280.jpg",
+        "imgSet": "assets/img/home/about-640.jpg 640w, assets/img/home/about-1280.jpg 1280w",
+        "alt": "A tall gopuram covered in rows of sculpted figures rising above a temple wall"
+      }
+    ],
+    "details": [
+      {
+        "label": "Bank transfer",
+        "value": "Ask the Temple Office"
+      },
+      {
+        "label": "UPI",
+        "value": "Ask the Temple Office"
+      },
+      {
+        "label": "Cheque or demand draft",
+        "value": "Ask the Temple Office"
+      },
+      {
+        "label": "Receipts",
+        "value": "Ask the Temple Office"
+      },
+      {
+        "label": "Tax information",
+        "value": "Ask the Temple Office"
+      }
+    ],
+    "faqs": [
+      {
+        "id": "how",
+        "q": "How can I make a contribution?",
+        "a": "Please contact the Temple Office. They will give you the verified ways to contribute. Official details will appear on this page only after the Trust has confirmed them."
+      },
+      {
+        "id": "genuine",
+        "q": "How do I know payment details are genuine?",
+        "a": "Use only details given to you directly by the Temple Office. If anyone else sends you payment details for the temple, please check with the office before sending money."
+      },
+      {
+        "id": "receipt",
+        "q": "Will I receive a receipt?",
+        "a": "Whether and how receipts are issued is confirmed by the Temple Office. Please ask when you enquire."
+      },
+      {
+        "id": "purpose",
+        "q": "Can I give towards a particular purpose?",
+        "a": "You can ask the Temple Office whether a contribution can be directed to a purpose such as daily worship, annadanam, temple upkeep or festivals."
+      },
+      {
+        "id": "kind",
+        "q": "Can I help in other ways?",
+        "a": "Ask the Temple Office what the temple can accept and where help is needed."
+      }
+    ]
+  },
+  "contact": {
+    "_note": "Contact page. mapQuery defaults to the address above; set 'mapQuery' (a search text) or 'mapEmbedUrl' (an embed link from your maps provider) for a more exact pin. formEndpoint: leave empty to open the visitor's email app with the message ready (nothing is claimed as sent). Set a real form-handling URL to POST the form instead.",
+    "mapQuery": "",
+    "mapEmbedUrl": "",
+    "mapZoom": 15,
+    "formEndpoint": "",
+    "submitLabel": "Prepare My Enquiry",
+    "topics": [
+      {
+        "id": "general",
+        "label": "General enquiry"
+      },
+      {
+        "id": "visit",
+        "label": "Planning a visit"
+      },
+      {
+        "id": "pooja-timings",
+        "label": "Pooja timings"
+      },
+      {
+        "id": "donation",
+        "label": "Donations and temple support"
+      },
+      {
+        "id": "volunteer",
+        "label": "Volunteering"
+      },
+      {
+        "id": "other",
+        "label": "Something else"
+      }
+    ],
+    "visit": [
+      {
+        "icon": "clock",
+        "title": "Before you travel",
+        "text": "Check the pooja timings and festival dates, or ask the Temple Office what is planned for your day.",
+        "href": "pooja-timings.html",
+        "label": "Pooja timings"
+      },
+      {
+        "icon": "map-pin",
+        "title": "Finding the temple",
+        "text": "Use the map above, or open directions in your own maps app.",
+        "href": "",
+        "label": ""
+      },
+      {
+        "icon": "users",
+        "title": "When you arrive",
+        "text": "For facilities and any visitor guidance, ask the Temple Office.",
+        "href": "#form",
+        "label": "Ask a question"
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+<!-- 7 · Final visit / enquiry CTA (split panel) -->
+<section id="visit" class="section-y hm2-visit" aria-labelledby="visit-title">
+  <div class="container-temple">
+    <div class="hm2-visit-panel" data-reveal>
+      <figure class="hm2-visit-photo hm-zoom">
+        <img
+          src="assets/img/home2/cta-1400.jpg"
+          srcset="assets/img/home2/cta-800.jpg 800w, assets/img/home2/cta-1400.jpg 1400w"
+          sizes="(min-width: 64rem) 560px, 100vw"
+          loading="lazy" decoding="async"
+          alt="Weathered stone temple in warm light, with carved walls and a tiered tower">
+      </figure>
+      <div class="hm2-visit-body">
+        <p class="hm2-visit-eyebrow">You are welcome here</p>
+        <h2 id="visit-title">Visit {{site.templeName}}</h2>
+        <p class="hm2-visit-lead">Come for darshan, join a pooja, or ask the temple office about a seva or festival. Every devotee and visitor is welcome.</p>
+        <ul class="hm2-visit-info">
+          <li><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg><span>{{site.address.line1}}, {{site.address.city}}</span></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:{{site.phone.href}}">{{site.phone.display}}</a></li>
+          <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:{{site.email}}">{{site.email}}</a></li>
+        </ul>
+        <div class="hm-cta-row hm2-cta-start">
+          <a class="btn btn-gold btn-lg" href="contact.html"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Plan Your Visit</a>
+          <a class="btn btn-on-dark btn-lg" href="tel:{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call the Temple</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

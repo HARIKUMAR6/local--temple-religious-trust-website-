@@ -1,0 +1,33 @@
+<!-- About 3 · History & heritage (banner photograph + chapter stepper) -->
+<section id="history" class="section-y ab-history" aria-labelledby="history-title">
+  <div class="container-temple">
+    <div class="hm-split-head">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">History &amp; Heritage</p>
+        <h2 id="history-title">A story still being written down</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-lotus"/></svg></div>
+      </div>
+      <p class="hm-lead" data-reveal style="--reveal-delay:100ms">The temple's history belongs to the Trust and its devotees. These are the chapters it will tell, once the details are verified.</p>
+    </div>
+
+    <figure class="ab-banner hm-zoom" data-reveal="zoom">
+      <img
+        src="assets/img/pages/about-history-1500.jpg"
+        srcset="assets/img/pages/about-history-800.jpg 800w, assets/img/pages/about-history-1500.jpg 1500w"
+        sizes="(min-width: 80rem) 1200px, 100vw"
+        loading="lazy" decoding="async"
+        alt="An ancient stone temple compound seen across a green rice field with palm trees">
+    </figure>
+
+    <ol class="ab-steps">
+      {{#each site.about.history}}
+      <li class="ab-step" data-reveal style="--reveal-delay:{{this.index}}00ms">
+        <span class="ab-step-node" aria-hidden="true">{{this.n}}</span>
+        <h3>{{this.title}}</h3>
+        <p>{{this.text}}</p>
+        <p class="ab-status"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{this.status}}</p>
+      </li>
+      {{/each}}
+    </ol>
+  </div>
+</section>

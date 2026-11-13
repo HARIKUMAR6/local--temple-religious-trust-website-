@@ -1,0 +1,32 @@
+<!-- 5 · Special poojas & sevas (pill selector + enquiry strip) -->
+<section id="sevas" class="section-y hm2-sevas" aria-labelledby="sevas-title" data-seva-enquiry>
+  <div class="container-temple">
+    <div class="hm2-sevas-grid">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Special Poojas &amp; Sevas</p>
+        <h2 id="sevas-title">A seva for every intention</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-heart-hand"/></svg></div>
+        <p class="hm-lead">Choose a seva to read about it, then reach the temple office. Availability and offering details are confirmed by the office.</p>
+      </div>
+
+      <fieldset class="hm2-seva-list" data-reveal style="--reveal-delay:100ms">
+        <legend class="sr-only">Choose a seva to enquire about</legend>
+        {{#each site.home.sevas}}
+        <div class="hm2-seva-item">
+          <label class="hm2-seva-pill"><input type="radio" name="seva" value="{{this.id}}" data-name="{{this.name}}" {{#if this.first}}checked{{/if}}><span>{{this.name}}</span></label>
+          <p class="hm2-seva-sum">{{this.summary}}</p>
+        </div>
+        {{/each}}
+      </fieldset>
+    </div>
+
+    <div class="hm2-enquiry" data-reveal>
+      <p class="hm2-enquiry-label"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span>Enquire about <strong data-seva-selected>{{site.home.sevas.0.name}}</strong></span></p>
+      <div class="hm2-enquiry-actions">
+        <a class="btn btn-primary" href="tel:{{site.phone.href}}" data-enquiry-call><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call the Temple Office</a>
+        <a class="btn btn-outline" href="mailto:{{site.email}}?subject=Seva%20enquiry" data-enquiry-mail><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Email an Enquiry</a>
+        <a class="btn btn-outline" href="contact.html" data-enquiry-online>Contact Page<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>

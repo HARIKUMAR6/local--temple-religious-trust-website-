@@ -1,0 +1,29 @@
+<!-- 7 · Final CTA -->
+<section id="visit" class="hm-cta" aria-labelledby="visit-title">
+  <div class="hm-cta-media">
+    <img
+      src="assets/img/home/cta-1800.jpg"
+      srcset="assets/img/home/cta-960.jpg 960w, assets/img/home/cta-1800.jpg 1800w, assets/img/home/cta-2560.jpg 2560w"
+      sizes="100vw"
+      loading="lazy" decoding="async"
+      alt="A grand pillared hall inside a South Indian temple, its ceiling painted in rich colours">
+    <span class="hm-cta-shade" aria-hidden="true"></span>
+  </div>
+
+  <div class="container-temple">
+    <div class="hm-cta-inner">
+      <p class="text-eyebrow-style" style="color:var(--color-gold-200)" data-reveal>You are welcome here</p>
+      <h2 id="visit-title" data-reveal style="--reveal-delay:80ms">Visit {{site.templeName}}</h2>
+      <div class="ornament" aria-hidden="true" data-reveal style="--reveal-delay:120ms"><svg class="icon"><use href="#i-lotus"/></svg></div>
+      <p class="hm-cta-lead" data-reveal style="--reveal-delay:160ms">Come for darshan, join a pooja, or ask the temple office about a seva or festival. Every devotee and visitor is welcome.</p>
+      <div class="hm-cta-row" data-reveal style="--reveal-delay:240ms">
+        <a class="btn btn-gold btn-lg" href="contact.html"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Plan Your Visit</a>
+        <a class="btn btn-on-dark btn-lg" href="tel:{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call the Temple</a>
+      </div>
+      <p class="hm-cta-contact" data-reveal style="--reveal-delay:300ms">
+        <span><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>{{site.address.line1}}, {{site.address.city}}</span>
+        <a href="mailto:{{site.email}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>{{site.email}}</a>
+      </p>
+    </div>
+  </div>
+</section>

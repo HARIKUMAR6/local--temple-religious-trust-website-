@@ -1,0 +1,50 @@
+<!-- 4 · Festivals & Celebrations -->
+<section id="festivals" class="section-y hm-festivals bg-kolam is-faded" aria-labelledby="festivals-title">
+  <div class="container-temple">
+    <div class="hm-split-head">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Festivals &amp; Celebrations</p>
+        <h2 id="festivals-title">Days of light, colour and community</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-lotus"/></svg></div>
+      </div>
+      <p class="hm-lead" data-reveal style="--reveal-delay:100ms">Festivals are when a temple comes alive. The festivals shown here are indicative: the Trust will confirm which ones the temple observes, along with their dates and timings.</p>
+    </div>
+
+    <ul class="hm-fest-grid">
+      {{#each site.home.festivals}}
+      <li data-reveal style="--reveal-delay:{{this.index}}00ms">
+        <article class="hm-fest" id="festival-{{this.id}}" data-festival="{{this.id}}" data-name="{{this.name}}" data-iso="{{this.isoDate}}" aria-labelledby="festival-{{this.id}}-title">
+          <figure class="hm-fest-media hm-zoom">
+            <img
+              src="assets/img/home/{{this.image}}-1280.jpg"
+              srcset="assets/img/home/{{this.image}}-640.jpg 640w, assets/img/home/{{this.image}}-1280.jpg 1280w"
+              sizes="(min-width: 64rem) 400px, (min-width: 48rem) 40vw, 100vw"
+              loading="lazy" decoding="async"
+              alt="{{this.imageAlt}}">
+            <figcaption class="hm-fest-kind">{{this.kind}}</figcaption>
+          </figure>
+          <div class="hm-fest-body">
+            <h3 id="festival-{{this.id}}-title">{{this.name}}</h3>
+            <p class="hm-fest-summary">{{this.summary}}</p>
+            <p class="hm-fest-meta">
+              <span><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>{{this.dateLabel}}</span>
+              <span><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{this.timeLabel}}</span>
+            </p>
+            <div class="hm-fest-actions">
+              <button type="button" class="btn btn-primary btn-sm" aria-expanded="false" aria-controls="festival-{{this.id}}-panel" data-fest-toggle><span data-label>Details</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+              <button type="button" class="btn btn-outline btn-sm" data-share><svg class="icon" aria-hidden="true"><use href="#i-share"/></svg>Share</button>
+              {{#if this.isoDate}}<button type="button" class="btn btn-outline btn-sm" data-ics><svg class="icon" aria-hidden="true"><use href="#i-calendar"/></svg>Add to calendar</button>{{/if}}
+              <a class="btn btn-outline btn-sm" href="contact.html?topic=festival-{{this.id}}"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Enquire</a>
+            </div>
+            <div class="hm-fest-panel" id="festival-{{this.id}}-panel" hidden>
+              <p><strong>About this festival</strong><br>{{this.about}}</p>
+              <p><strong>How to take part</strong><br>{{this.participation}}</p>
+            </div>
+            <p class="hm-status" role="status" aria-live="polite" data-status></p>
+          </div>
+        </article>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>

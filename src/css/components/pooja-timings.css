@@ -1,0 +1,890 @@
+/* ==========================================================================
+   Pooja Timings page (prefix `pt-`). Reuses: .hero-shell, .hm2-chip(s), .hm2-fest-actions,
+   .hm2-fest-panel, .hm-split-head, .hm-status, .hm-slot-name, .hm-zoom, .hm-cta-row.
+   ========================================================================== */
+
+@layer components {
+  .pt-period {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+  .pt-time {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .pt-time .icon {
+    color: var(--accent-gold);
+  }
+
+  /* 1 · Hero: announcement + day dial */
+  .pt-hero {
+    background: var(--surface);
+    color: var(--text);
+  }
+  .pt-hero-grid {
+    flex: 1;
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 2vw, 3.5rem);
+    align-items: center;
+    padding-block: clamp(2rem, 1.4rem + 3vw, 4rem);
+  }
+  .pt-hero-copy {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .pt-hero-copy h1 {
+    font-size: var(--text-display);
+    line-height: var(--text-display--line-height);
+  }
+  .pt-hero-lead {
+    max-width: 34rem;
+    font-size: var(--text-lead);
+    line-height: var(--text-lead--line-height);
+    color: var(--text-muted);
+  }
+  .pt-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.1rem 0.4rem;
+    border-radius: 999px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  @media (width >= 64rem) {
+    .pt-hero-grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    }
+    .pt-hero-copy {
+      justify-items: start;
+      text-align: start;
+    }
+  }
+  .pt-dial {
+    position: relative;
+    order: -1;
+    width: min(100%, 22rem);
+    aspect-ratio: 1;
+    margin-inline: auto;
+  }
+  @media (width >= 64rem) {
+    .pt-dial {
+      order: 0;
+      /* sized from the viewport so the hero stays within the shared hero-shell height */
+      width: min(100%, clamp(20rem, calc(100svh - var(--header-h) - 4px - 9rem), 30rem));
+      margin-inline: auto 0;
+    }
+  }
+  .pt-dial-photo {
+    position: absolute;
+    inset: 11%;
+    margin: 0;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--surface), 0 0 0 5px var(--ornament), var(--shadow-lift);
+  }
+  .pt-dial-photo img {
+    object-position: 50% 60%;
+  }
+  .pt-dial-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    color: var(--ornament);
+    pointer-events: none;
+  }
+  .pt-dial-nodes {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    pointer-events: none; /* only the node links are interactive, so the photo stays hoverable */
+  }
+  .pt-dial-node {
+    position: absolute;
+    transform: translate(-50%, -50%);
+  }
+  .pt-n0 { left: 17.5%; top: 17.5%; }
+  .pt-n1 { left: 82.5%; top: 17.5%; }
+  .pt-n2 { left: 82.5%; top: 82.5%; }
+  .pt-n3 { left: 17.5%; top: 82.5%; }
+  .pt-dial-node a {
+    pointer-events: auto;
+    display: grid;
+    justify-items: center;
+    gap: 0.25rem;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .pt-dial-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: var(--surface-raised);
+    color: var(--accent);
+    box-shadow: 0 0 0 2px var(--ornament), var(--shadow-soft);
+    transition: background-color var(--duration-base) ease, color var(--duration-base) ease, transform var(--duration-base) var(--ease-temple);
+  }
+  .pt-dial-label {
+    padding: 0.1rem 0.55rem;
+    border-radius: 999px;
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-soft);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .pt-dial-node a:hover .pt-dial-icon,
+  .pt-dial-node a:focus-visible .pt-dial-icon {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+    transform: scale(1.08);
+  }
+
+  /* 2 · Daily schedule */
+  .pt-schedule {
+    background: var(--surface-alt);
+  }
+  .pt-announce {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--ornament);
+    border-inline-start-width: 4px;
+    border-radius: var(--radius-panel);
+    background: var(--surface-raised);
+  }
+  .pt-announce-icon {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+  }
+  .pt-announce-text strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: var(--text-h4);
+    font-weight: 400;
+    color: var(--heading);
+  }
+  .pt-announce-text p {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .pt-announce-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  @media (width >= 48rem) {
+    .pt-announce {
+      grid-template-columns: auto minmax(0, 1fr) auto;
+    }
+  }
+  @media (width < 48rem) {
+    .pt-announce {
+      justify-items: center;
+      text-align: center;
+    }
+    .pt-announce-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      width: min(100%, 20rem);
+    }
+    .pt-announce-actions .btn {
+      width: 100%;
+    }
+  }
+  .pt-controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+  .pt-sched {
+    border-top: 1px solid var(--border-strong);
+  }
+  .pt-row {
+    padding-block: 0.25rem 1rem;
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .pt-row-main {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-areas: "icon id" ". time" ". more";
+    gap: 0.4rem 1rem;
+    align-items: center;
+    justify-items: start;
+    padding-top: 0.9rem;
+  }
+  .pt-row-icon {
+    grid-area: icon;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--accent);
+    box-shadow: 0 0 0 2px var(--ornament), 0 0 0 7px var(--surface-alt);
+  }
+  .pt-row.is-now .pt-row-icon {
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+  }
+  .pt-row-id {
+    grid-area: id;
+  }
+  .pt-row .hm-slot-name {
+    font-size: var(--text-h3);
+  }
+  .pt-row .pt-time {
+    grid-area: time;
+  }
+  .pt-more {
+    grid-area: more;
+  }
+  .pt-more .icon {
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  .pt-more[aria-expanded="true"] .icon {
+    transform: rotate(180deg);
+  }
+  @media (width >= 48rem) {
+    .pt-row-main {
+      grid-template-columns: auto minmax(0, 1fr) auto auto;
+      grid-template-areas: "icon id time more";
+      gap: 1.25rem;
+      justify-items: start;
+    }
+    .pt-row .pt-time {
+      justify-self: end;
+    }
+  }
+  .pt-row-detail {
+    max-width: 64ch;
+    margin-top: 0.4rem;
+    padding-inline-start: 4rem;
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .pt-row-panel {
+    margin: 0.75rem 0 0;
+    margin-inline-start: 4rem;
+    padding: 0.9rem 1.1rem;
+    border-inline-start: 3px solid var(--ornament);
+    background: var(--surface-raised);
+    font-size: var(--text-small);
+    color: var(--text-muted);
+    animation: dropdown-in 220ms var(--ease-temple);
+  }
+  .pt-row-panel strong {
+    color: var(--heading);
+  }
+  .pt-row-panel ul {
+    display: grid;
+    gap: 0.25rem;
+    margin-top: 0.4rem;
+  }
+  .pt-row-panel li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+  }
+  .pt-row-panel li::before {
+    content: "";
+    flex-shrink: 0;
+    width: 0.4rem;
+    height: 0.4rem;
+    transform: rotate(45deg) translateY(-0.1rem);
+    background: var(--ornament);
+  }
+  .pt-row.is-now {
+    background: linear-gradient(90deg, color-mix(in srgb, var(--ornament) 16%, transparent), transparent);
+  }
+  [dir="rtl"] .pt-row.is-now {
+    background: linear-gradient(-90deg, color-mix(in srgb, var(--ornament) 16%, transparent), transparent);
+  }
+  .pt-updated {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+
+  /* 3 · Rituals: tabs (all panels stay visible without JavaScript) */
+  .pt-tabs {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .pt-tablist {
+    display: none;
+  }
+  .js .pt-tablist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .pt-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 3.25rem;
+    padding: 0.4rem 1.3rem 0.35rem;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--surface-raised);
+    color: var(--heading);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    cursor: pointer;
+    transition: background-color var(--duration-base) ease, color var(--duration-base) ease, border-color var(--duration-base) ease;
+  }
+  .pt-tab:hover {
+    border-color: var(--ornament);
+  }
+  .pt-tab[aria-selected="true"] {
+    background: var(--btn-primary-bg);
+    border-color: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+  }
+  .pt-panels {
+    display: grid;
+    gap: 1rem;
+  }
+  .pt-panel {
+    display: grid;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-panel);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-soft);
+    animation: dropdown-in 260ms var(--ease-temple);
+  }
+  .pt-panel-art {
+    display: grid;
+    place-items: center;
+    min-height: 8rem;
+    color: #fff7e6;
+  }
+  .pt-panel-art .icon {
+    width: 3.75rem;
+    height: 3.75rem;
+    stroke-width: 1.25;
+  }
+  .pt-art-dawn .pt-panel-art { background: linear-gradient(160deg, #c9742f, #7a1f2b); }
+  .pt-art-noon .pt-panel-art { background: linear-gradient(160deg, #c4891a, #a0303f); }
+  .pt-art-dusk .pt-panel-art { background: linear-gradient(160deg, #a0303f, #3e1a5c); }
+  .pt-art-night .pt-panel-art { background: linear-gradient(160deg, #2b2a5e, #120a08); }
+  .pt-panel-body {
+    display: grid;
+    gap: 0.7rem;
+    align-content: center;
+    padding: clamp(1.25rem, 1rem + 1.5vw, 2.5rem);
+  }
+  .pt-panel-body h3 {
+    font-size: var(--text-h2);
+  }
+  .pt-panel-intro {
+    max-width: 52ch;
+    font-size: var(--text-lead);
+    color: var(--text);
+  }
+  .pt-panel-confirm {
+    max-width: 56ch;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--border-strong);
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  @media (width >= 48rem) {
+    .pt-panel {
+      grid-template-columns: 14rem minmax(0, 1fr);
+    }
+    .pt-panel-art {
+      min-height: 100%;
+    }
+  }
+  @media (width >= 64rem) {
+    .js .pt-tabs {
+      grid-template-columns: 15rem minmax(0, 1fr);
+      gap: 2.5rem;
+      align-items: start;
+    }
+    .js .pt-tablist {
+      flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: flex-start;
+    }
+    .pt-tab {
+      justify-content: flex-start;
+      border-radius: var(--radius-panel);
+      width: 100%;
+    }
+  }
+
+  /* 4 · Sevas: ledger with leaders beside a photograph */
+  .pt-sevas {
+    background: var(--surface-alt);
+  }
+  .pt-sevas-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+  }
+  .pt-sevas-photo {
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-lift);
+  }
+  .pt-sevas-photo img {
+    /* the original is mostly sky: zoom towards the building (uses the independent `scale` property) */
+    scale: 1.5;
+    transform-origin: 30% 100%;
+  }
+  .pt-sevas-main .section-head {
+    margin-bottom: 1.5rem !important;
+  }
+  @media (width >= 64rem) {
+    .pt-sevas-grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 4rem;
+    }
+    .pt-sevas-photo {
+      aspect-ratio: 3 / 4;
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+  }
+  .pt-ledger {
+    border-top: 1px solid var(--border-strong);
+  }
+  .pt-ledger li {
+    display: grid;
+    gap: 0.4rem;
+    justify-items: start;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .pt-ledger-top {
+    display: flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
+    width: 100%;
+  }
+  .pt-ledger h3 {
+    font-size: var(--text-h3);
+  }
+  .pt-leader {
+    flex: 1;
+    min-width: 1rem;
+    border-bottom: 2px dotted var(--border-strong);
+    transform: translateY(-0.3rem);
+  }
+  .pt-chip {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+  .pt-ledger p {
+    max-width: 56ch;
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  @media (width < 40rem) {
+    .pt-leader {
+      display: none;
+    }
+  }
+
+  /* 5 · Occasions: date-badge list */
+  .pt-occ-list {
+    border-bottom: 1px solid var(--border-strong);
+  }
+  .pt-occ {
+    display: grid;
+    gap: 1rem;
+    padding-block: 1.5rem;
+    border-top: 1px solid var(--border-strong);
+  }
+  .pt-occ-date {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.25rem;
+    width: 5.5rem;
+    aspect-ratio: 1;
+    border: 2px solid var(--ornament);
+    border-radius: 1rem;
+    background: var(--surface-raised);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.25;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .pt-occ-date .icon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .pt-occ-body {
+    display: grid;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+  .pt-occ-body h3 {
+    font-size: var(--text-h3);
+  }
+  .pt-occ-summary {
+    max-width: 60ch;
+    color: var(--text-muted);
+  }
+  .pt-occ-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.5rem;
+    font-size: var(--text-small);
+    font-weight: 600;
+  }
+  .pt-occ-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .pt-occ-meta .icon {
+    color: var(--accent-gold);
+  }
+  .pt-occ [data-fest-toggle] .icon {
+    transition: transform var(--duration-base) var(--ease-temple);
+  }
+  .pt-occ [data-fest-toggle][aria-expanded="true"] .icon {
+    transform: rotate(45deg);
+  }
+  @media (width >= 48rem) {
+    .pt-occ {
+      grid-template-columns: 5.5rem minmax(0, 1fr);
+      gap: 2rem;
+    }
+  }
+  @media (width >= 64rem) {
+    /* actions move into the otherwise empty right-hand side */
+    .pt-occ-body {
+      grid-template-columns: minmax(0, 1fr) 13rem;
+      column-gap: 3rem;
+    }
+    .pt-occ-body > * {
+      grid-column: 1;
+    }
+    .pt-occ-body > .pt-occ-actions {
+      grid-column: 2;
+      grid-row: 1 / span 4;
+      align-self: center;
+      display: grid;
+      grid-template-columns: 1fr;
+    }
+    .pt-occ-body > .hm2-fest-panel,
+    .pt-occ-body > .hm-status {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* 6 · Visit strip */
+  .pt-visit {
+    --text: var(--footer-fg);
+    --ornament: var(--color-gold-400);
+    --ring: var(--color-gold-300);
+    --ring-halo: rgb(226 190 106 / 0.35);
+    background: var(--footer-bg);
+    color: var(--footer-fg);
+    padding-block: clamp(3rem, 2.2rem + 4vw, 5.5rem);
+  }
+  .pt-visit-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+  .pt-visit-copy,
+  .pt-visit-contact {
+    display: grid;
+    gap: 0.9rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .pt-visit-eyebrow {
+    font-size: var(--text-eyebrow);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-gold-300);
+  }
+  .pt-visit h2 {
+    font-size: var(--text-h2);
+    color: #fff7e6;
+  }
+  .pt-visit-lead {
+    max-width: 44ch;
+    color: var(--footer-fg);
+  }
+  .pt-phone {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 1.3rem + 1.5vw, 2.4rem);
+    color: #fff7e6;
+    text-decoration: none;
+  }
+  .pt-phone:hover {
+    color: var(--color-gold-200);
+  }
+  .pt-phone .icon {
+    color: var(--color-gold-300);
+  }
+  .pt-visit-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--footer-fg);
+    font-size: var(--text-small);
+  }
+  .pt-visit-line .icon {
+    color: var(--color-gold-300);
+  }
+  @media (width >= 64rem) {
+    .pt-visit-grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+      gap: 4rem;
+    }
+    .pt-visit-copy,
+    .pt-visit-contact {
+      justify-items: start;
+      text-align: start;
+    }
+  }
+}
+
+@media print {
+  .site-header,
+  .site-footer,
+  .scroll-top,
+  .skip-link,
+  .mobile-menu,
+  .pt-controls,
+  .pt-hero .hm-cta-row,
+  .pt-visit,
+  .pt-more {
+    display: none !important;
+  }
+  .pt-schedule {
+    background: #fff;
+  }
+}
+
+/* ==========================================================================
+   Pooja Timings: photographs integrated with the existing sections
+   ========================================================================== */
+@layer components {
+  /* Schedule: sticky photo beside the list */
+  .pt-sched-grid {
+    display: grid;
+    gap: 1.5rem;
+    align-items: start;
+  }
+  .pt-sched-main {
+    min-width: 0;
+  }
+  .pt-sched-photo {
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-lift);
+    background: var(--surface-alt);
+  }
+  .pt-sched-photo img {
+    object-position: 40% 55%;
+  }
+  @media (width >= 64rem) {
+    .pt-sched-grid {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: 3rem;
+    }
+    .pt-sched-photo {
+      aspect-ratio: 3 / 4;
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+  }
+
+  /* Rituals: each part of the day has its own photograph, tinted by the time of day */
+  .pt-panel-art {
+    position: relative;
+    overflow: hidden;
+    min-height: 11rem;
+  }
+  .pt-panel-art img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .pt-panel-art::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+  }
+  .pt-panel-art {
+    place-items: end start;
+    padding: 0.9rem;
+  }
+  .pt-panel-art .icon {
+    position: relative;
+    z-index: 1;
+    width: 2.75rem;
+    height: 2.75rem;
+    padding: 0.6rem;
+    border-radius: 999px;
+    background: rgb(34 9 15 / 0.62);
+    stroke-width: 1.75;
+  }
+  .pt-art-dawn .pt-panel-art::after { background: linear-gradient(160deg, rgb(201 116 47 / 0.35), rgb(122 31 43 / 0.7)); }
+  .pt-art-noon .pt-panel-art::after { background: linear-gradient(160deg, rgb(196 137 26 / 0.3), rgb(160 48 63 / 0.62)); }
+  .pt-art-dusk .pt-panel-art::after { background: linear-gradient(160deg, rgb(160 48 63 / 0.4), rgb(62 26 92 / 0.72)); }
+  .pt-art-night .pt-panel-art::after { background: linear-gradient(160deg, rgb(43 42 94 / 0.55), rgb(18 10 8 / 0.8)); }
+  @media (width >= 48rem) {
+    .pt-panel {
+      grid-template-columns: 18rem minmax(0, 1fr);
+    }
+  }
+
+  /* Sevas: two stacked photographs */
+  .pt-sevas-media {
+    display: grid;
+    gap: 1rem;
+  }
+  .pt-sevas-photo,
+  .pt-sevas-photo2 {
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-lift);
+    background: var(--surface-alt);
+  }
+  .pt-sevas-photo2 img {
+    object-position: 50% 62%;
+  }
+  @media (width >= 64rem) {
+    .pt-sevas-media {
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+    .pt-sevas-photo {
+      position: static;
+      aspect-ratio: 16 / 11;
+    }
+    .pt-sevas-photo2 {
+      aspect-ratio: 16 / 11;
+    }
+  }
+
+  /* Occasions: festival photograph on every row */
+  .pt-occ {
+    grid-template-areas: "date" "photo" "body";
+  }
+  .pt-occ-date {
+    grid-area: date;
+  }
+  .pt-occ-photo {
+    grid-area: photo;
+    margin: 0;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius-panel);
+    box-shadow: var(--shadow-soft);
+    background: var(--surface-alt);
+  }
+  .pt-occ-body {
+    grid-area: body;
+  }
+  @media (width >= 48rem) {
+    .pt-occ {
+      grid-template-columns: 5.5rem minmax(0, 1fr);
+      grid-template-areas: "date photo" "date body";
+    }
+    .pt-occ-photo {
+      aspect-ratio: 21 / 9;
+    }
+  }
+  @media (width >= 64rem) {
+    .pt-occ {
+      grid-template-columns: 5.5rem minmax(0, 1fr) 17rem;
+      grid-template-areas: "date body photo";
+      align-items: start;
+    }
+    .pt-occ-photo {
+      aspect-ratio: 4 / 3;
+    }
+  }
+
+  /* Visit strip: photograph beside the contact details */
+  .pt-visit-photo {
+    margin: 0;
+    aspect-ratio: 16 / 10;
+    border-radius: var(--radius-panel);
+    box-shadow: 0 24px 48px -24px rgb(0 0 0 / 0.7), 0 0 0 1px rgb(226 190 106 / 0.35);
+    background: var(--color-maroon-950);
+  }
+  .pt-visit-main {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+  @media (width >= 64rem) {
+    .pt-visit-grid {
+      grid-template-columns: minmax(0, 4fr) minmax(0, 8fr);
+      gap: 3.5rem;
+    }
+    .pt-visit-main {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 3rem;
+    }
+    .pt-visit .pt-phone {
+      font-size: clamp(1.35rem, 0.9rem + 1.2vw, 2rem);
+    }
+    .pt-visit-photo {
+      aspect-ratio: 3 / 4;
+    }
+  }
+}

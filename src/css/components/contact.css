@@ -1,0 +1,554 @@
+/* ==========================================================================
+   Contact page (prefix `ct-`). Reuses: .hero-shell, form controls (.field/.label/.input/.select/
+   .textarea/.error-text/.help-text), .hm-split-head, .hm-lead, .hm-cta-row, .hm-zoom, .link-arrow.
+   ========================================================================== */
+
+@layer components {
+  /* 1 · Hero: quick actions + postmarked gateway photo */
+  .ct-hero {
+    background: var(--surface);
+    color: var(--text);
+  }
+  .ct-hero-grid {
+    flex: 1;
+    display: grid;
+    gap: clamp(1.5rem, 1rem + 2vw, 3.5rem);
+    align-items: center;
+    padding-block: clamp(2rem, 1.4rem + 3vw, 4rem);
+  }
+  .ct-hero-copy {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    text-align: center;
+  }
+  .ct-hero-copy h1 {
+    font-size: var(--text-h1);
+    line-height: var(--text-h1--line-height);
+  }
+  .ct-hero-lead {
+    max-width: 34rem;
+    font-size: var(--text-lead);
+    line-height: var(--text-lead--line-height);
+    color: var(--text-muted);
+  }
+  .ct-quick {
+    display: grid;
+    gap: 0.6rem;
+    width: min(100%, 26rem);
+    margin-top: 0.25rem;
+  }
+  .ct-quick a {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    min-height: 3.75rem;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-panel);
+    background: var(--surface-raised);
+    color: var(--text);
+    text-align: start;
+    text-decoration: none;
+    transition: transform var(--duration-base) var(--ease-temple), border-color var(--duration-base) ease, box-shadow var(--duration-base) ease;
+  }
+  .ct-quick a:hover {
+    transform: translateY(-2px);
+    border-color: var(--ornament);
+    box-shadow: var(--shadow-soft);
+    color: var(--text);
+  }
+  .ct-quick-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background: var(--btn-primary-bg);
+    color: var(--btn-primary-fg);
+  }
+  .ct-quick-text {
+    display: grid;
+    min-width: 0;
+    line-height: 1.3;
+  }
+  .ct-quick-text > span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+  .ct-quick-text strong {
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+  .ct-hero-media {
+    position: relative;
+    order: -1;
+    width: min(70%, 17rem);
+    margin-inline: auto;
+  }
+  .ct-hero-photo {
+    margin: 0;
+    aspect-ratio: 3 / 4;
+    border-radius: 1rem;
+    box-shadow: var(--shadow-lift);
+    background: var(--surface-alt);
+  }
+  .ct-postmark {
+    position: absolute;
+    inset-inline-start: -1.5rem;
+    bottom: 2rem;
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 0.1rem;
+    width: 6.5rem;
+    height: 6.5rem;
+    border: 2px solid var(--ornament);
+    border-radius: 50%;
+    background: var(--surface-raised);
+    color: var(--accent);
+    box-shadow: var(--shadow-soft);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(-12deg);
+  }
+  .ct-postmark::before {
+    content: "";
+    position: absolute;
+    inset: 0.3rem;
+    border: 1px dashed var(--ornament);
+    border-radius: 50%;
+  }
+  @media (width >= 64rem) {
+    .ct-hero-grid {
+      grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);
+    }
+    .ct-hero-copy {
+      justify-items: start;
+      text-align: start;
+    }
+    .ct-hero-media {
+      order: 0;
+      width: auto;
+      margin-inline: auto 0;
+    }
+    .ct-hero-photo {
+      /* sized from the viewport so the hero stays within the shared hero-shell height */
+      height: clamp(20rem, calc(100svh - var(--header-h) - 4px - 9rem), 34rem);
+    }
+  }
+
+  /* 2 · Contact information: letterhead row */
+  .ct-info {
+    background: var(--surface-alt);
+  }
+  .ct-slab {
+    display: grid;
+    border-top: 1px solid var(--border-strong);
+  }
+  .ct-slab li {
+    display: grid;
+    align-content: start;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding-block: 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .ct-slab-icon {
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--accent);
+    box-shadow: 0 0 0 1px var(--ornament);
+  }
+  .ct-slab h3 {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent-gold);
+  }
+  .ct-slab-value {
+    margin: 0.15rem 0 0.5rem;
+    font-family: var(--font-display);
+    font-size: var(--text-h4);
+    font-style: normal;
+    line-height: 1.35;
+    color: var(--heading);
+    overflow-wrap: anywhere;
+  }
+  @media (width >= 40rem) {
+    .ct-slab {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 2.5rem;
+    }
+  }
+  @media (width >= 64rem) {
+    .ct-slab {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      column-gap: 0;
+    }
+    .ct-slab li {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      padding: 1.75rem 1.25rem;
+      border-bottom: 0;
+      text-align: center;
+    }
+    .ct-slab li + li {
+      border-inline-start: 1px solid var(--border-strong);
+    }
+  }
+
+  /* 3 · Interactive map */
+  .ct-map-grid {
+    display: grid;
+    gap: 1rem;
+    padding-block: clamp(2.5rem, 2rem + 2vw, 4.5rem);
+  }
+  .ct-map-card {
+    display: grid;
+    align-content: start;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--ornament);
+    border-radius: var(--radius-panel);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-soft);
+  }
+  .ct-map-card h2 {
+    font-size: var(--text-h3);
+  }
+  .ct-map-address {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    font-style: normal;
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .ct-map-address .icon {
+    margin-top: 0.15rem;
+    color: var(--accent);
+  }
+  .ct-map-actions {
+    display: grid;
+    justify-items: center;
+    gap: 0.5rem;
+  }
+  .ct-map-actions .btn {
+    width: min(100%, 20rem);
+  }
+  .ct-map-frame {
+    position: relative;
+    height: min(70svh, 24rem);
+    overflow: hidden;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius-panel);
+    background: var(--surface-alt);
+    box-shadow: var(--shadow-lift);
+  }
+  .ct-map-frame iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+  @media (width >= 64rem) {
+    .ct-map-grid {
+      grid-template-columns: 21rem minmax(0, 1fr);
+      gap: 1.5rem;
+      align-items: stretch;
+    }
+    .ct-map-frame {
+      height: 30rem;
+    }
+    .ct-map-actions {
+      justify-items: stretch;
+    }
+    .ct-map-actions .btn {
+      width: 100%;
+    }
+  }
+
+  /* 4 · Enquiry form */
+  .ct-form-sec {
+    background: var(--surface-alt);
+  }
+  .ct-form-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+  }
+  .ct-form-aside {
+    display: grid;
+    gap: 1.5rem;
+  }
+  .ct-form-aside .section-head {
+    margin-bottom: 0 !important;
+  }
+  .ct-steps {
+    display: grid;
+    gap: 0.9rem;
+  }
+  .ct-steps li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.9rem;
+    align-items: start;
+  }
+  .ct-steps li > span {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid var(--ornament);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--accent);
+    font-family: var(--font-display);
+  }
+  .ct-aside-note {
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  .ct-form-panel {
+    padding: clamp(1.25rem, 1rem + 1.5vw, 2.25rem);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--ornament);
+    border-radius: var(--radius-panel);
+    background: var(--surface-raised);
+    box-shadow: var(--shadow-lift);
+  }
+  .ct-fields {
+    display: grid;
+    gap: 1.1rem;
+  }
+  .ct-fields[hidden] {
+    display: none;
+  }
+  .help-inline {
+    font-weight: 400;
+    color: var(--text-muted);
+  }
+  .ct-submit {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    justify-items: center;
+  }
+  .ct-submit .btn {
+    width: min(100%, 20rem);
+  }
+  .ct-summary {
+    margin-bottom: 1.25rem;
+    padding: 1rem 1.25rem;
+    border: 1px solid #b42318;
+    border-inline-start-width: 4px;
+    border-radius: var(--radius-chip);
+    background: #fef3f2;
+    color: #7a271a;
+  }
+  .ct-summary h3 {
+    margin-bottom: 0.4rem;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    font-weight: 700;
+    color: inherit;
+  }
+  .ct-summary ul {
+    display: grid;
+    gap: 0.2rem;
+    padding-inline-start: 1.1rem;
+    list-style: disc;
+  }
+  .ct-summary a {
+    color: inherit;
+    font-weight: 600;
+  }
+  [data-theme="dark"] .ct-summary {
+    background: #3b1410;
+    border-color: #f97066;
+    color: #fecdca;
+  }
+  .ct-result {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid var(--ornament);
+    border-radius: var(--radius-panel);
+    background: var(--surface-alt);
+  }
+  .ct-result[hidden] {
+    display: none;
+  }
+  .ct-result h3 {
+    font-size: var(--text-h4);
+  }
+  .ct-result-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .ct-result-actions .btn {
+    width: min(100%, 20rem);
+  }
+  @media (width >= 40rem) {
+    .ct-fields {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .ct-wide {
+      grid-column: 1 / -1;
+    }
+    .ct-submit {
+      justify-items: start;
+    }
+    .ct-submit .btn {
+      width: auto;
+    }
+    .ct-result-actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .ct-result-actions .btn {
+      width: auto;
+    }
+  }
+  @media (width >= 64rem) {
+    .ct-form-grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 4rem;
+    }
+    .ct-form-aside {
+      position: sticky;
+      top: calc(var(--header-h) + 2rem);
+    }
+  }
+
+  /* 5 · Visit information */
+  .ct-visit-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+  }
+  .ct-visit-photo {
+    --off: 0.75rem;
+    margin: 0 var(--off) var(--off) 0;
+    aspect-ratio: 16 / 10;
+    border-radius: 0.75rem;
+    background: var(--surface-alt);
+    box-shadow: var(--off) var(--off) 0 color-mix(in srgb, var(--ornament) 45%, transparent);
+  }
+  [dir="rtl"] .ct-visit-photo {
+    margin: 0 0 var(--off) var(--off);
+    box-shadow: calc(var(--off) * -1) var(--off) 0 color-mix(in srgb, var(--ornament) 45%, transparent);
+  }
+  .ct-visit-copy {
+    display: grid;
+    gap: 1.25rem;
+  }
+  .ct-visit-copy .section-head {
+    margin-bottom: 0 !important;
+  }
+  .ct-checks {
+    border-top: 1px solid var(--border-strong);
+  }
+  .ct-checks li {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1rem;
+    align-items: start;
+    padding-block: 1.1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .ct-check-icon {
+    display: grid;
+    place-items: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 999px;
+    background: var(--surface-alt);
+    color: var(--accent);
+    box-shadow: 0 0 0 1px var(--ornament);
+  }
+  .ct-checks h3 {
+    font-size: var(--text-h4);
+  }
+  .ct-checks p {
+    margin-bottom: 0.25rem;
+    color: var(--text-muted);
+    font-size: var(--text-small);
+  }
+  @media (width >= 64rem) {
+    .ct-visit-grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+      gap: 4.5rem;
+    }
+    .ct-visit-photo {
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  .ct-cta .btn,
+  .ct-hero .btn {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+  }
+  @media (width < 30rem) {
+    .ct-cta .btn-lg {
+      padding-inline: 1rem;
+      min-height: 4rem; /* equal height even when one label wraps to two lines */
+    }
+  }
+
+  /* 6 · Final CTA */
+  .ct-cta {
+    background: var(--surface-alt);
+  }
+  .ct-cta-inner {
+    display: grid;
+    gap: 1rem;
+    justify-items: center;
+    max-width: 60rem;
+    margin-inline: auto;
+    text-align: center;
+  }
+  .ct-cta-inner h2 {
+    font-size: var(--text-h2);
+  }
+  .ct-cta-inner .hm-lead {
+    max-width: 44ch;
+  }
+  .ct-cta-seal {
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border: 2px solid var(--ornament);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--accent);
+  }
+  .ct-cta-seal .icon {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+}

@@ -1,0 +1,100 @@
+/* ==========================================================================
+   Page intro band (shared by all page shells)
+   ========================================================================== */
+
+@layer components {
+  .page-intro {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface-alt);
+    padding-block: clamp(2.75rem, 1.9rem + 4.2vw, 5.5rem) clamp(3.25rem, 2.3rem + 4.6vw, 6.25rem);
+  }
+  .page-intro-inner {
+    position: relative;
+    display: grid;
+    gap: 1rem;
+    max-width: 46rem;
+  }
+  .page-intro-lead {
+    font-size: var(--text-lead);
+    line-height: var(--text-lead--line-height);
+    color: var(--text-muted);
+    max-width: 60ch;
+  }
+  .page-intro-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .page-intro-eyebrow .icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--ornament);
+  }
+
+  /* Decorative emblem watermark at the inline-end */
+  .page-intro-mark {
+    position: absolute;
+    inset-inline-end: -4rem;
+    top: 50%;
+    width: clamp(14rem, 10rem + 18vw, 26rem);
+    height: auto;
+    transform: translateY(-50%);
+    color: var(--ornament);
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  @media (width < 48rem) {
+    .page-intro-mark {
+      display: none;
+    }
+  }
+
+  /* Stepped gopuram base along the bottom edge */
+  .page-intro::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 22px;
+    background: var(--surface);
+    --s: 7px;
+    clip-path: polygon(
+      0 100%,
+      0 calc(100% - var(--s)),
+      calc(50% - 6rem) calc(100% - var(--s)),
+      calc(50% - 6rem) calc(100% - var(--s) * 2),
+      calc(50% - 4rem) calc(100% - var(--s) * 2),
+      calc(50% - 4rem) calc(100% - var(--s) * 3),
+      calc(50% + 4rem) calc(100% - var(--s) * 3),
+      calc(50% + 4rem) calc(100% - var(--s) * 2),
+      calc(50% + 6rem) calc(100% - var(--s) * 2),
+      calc(50% + 6rem) calc(100% - var(--s)),
+      100% calc(100% - var(--s)),
+      100% 100%
+    );
+  }
+
+  /* Breadcrumb */
+  .breadcrumb ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.9375rem;
+    color: var(--text-muted);
+  }
+  .breadcrumb a {
+    color: var(--link);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  .breadcrumb .icon {
+    width: 0.9rem;
+    height: 0.9rem;
+    color: var(--ornament);
+  }
+}

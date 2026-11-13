@@ -1,0 +1,34 @@
+<!-- Pooja 3 · Morning, afternoon and evening rituals (tabs) -->
+<section id="rituals" class="section-y pt-rituals" aria-labelledby="rituals-title">
+  <div class="container-temple">
+    <div class="section-head is-centered" data-reveal>
+      <p class="text-eyebrow-style">Through the Day</p>
+      <h2 id="rituals-title">Morning, afternoon and evening</h2>
+      <div class="ornament" aria-hidden="true"><svg class="icon"><use href="#i-lotus"/></svg></div>
+      <p class="hm-lead">Choose a part of the day to read what it involves.</p>
+    </div>
+
+    <div class="pt-tabs" data-tabs data-reveal>
+      <div class="pt-tablist" role="tablist" aria-label="Part of the day">
+        {{#each site.poojaPage.rituals}}
+        <button type="button" role="tab" class="pt-tab" id="tab-{{this.id}}" aria-controls="ritual-{{this.id}}" aria-selected="false" data-tab="{{this.id}}"><svg class="icon" aria-hidden="true"><use href="#i-{{this.icon}}"/></svg><span>{{this.label}}</span></button>
+        {{/each}}
+      </div>
+
+      <div class="pt-panels">
+        {{#each site.poojaPage.rituals}}
+        <div class="pt-panel pt-art-{{this.art}}" role="tabpanel" id="ritual-{{this.id}}" aria-labelledby="tab-{{this.id}}" tabindex="0" data-tabpanel="{{this.id}}">
+          <div class="pt-panel-art"><img src="{{this.img}}" srcset="{{this.imgSet}}" sizes="(min-width: 48rem) 280px, 100vw" loading="lazy" decoding="async" alt="{{this.alt}}"><svg class="icon" aria-hidden="true"><use href="#i-{{this.icon}}"/></svg></div>
+          <div class="pt-panel-body">
+            <p class="pt-period">{{this.label}}</p>
+            <h3>{{this.label}} worship</h3>
+            <p class="pt-panel-intro">{{this.intro}}</p>
+            <p class="pt-time"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{this.timeLabel}}</p>
+            <p class="pt-panel-confirm"><strong>To be confirmed by the temple office:</strong> the exact timing, the rituals performed, and whether devotees may take part or make offerings.</p>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</section>

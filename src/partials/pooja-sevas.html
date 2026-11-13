@@ -1,0 +1,41 @@
+<!-- Pooja 4 · Special poojas & sevas (ledger with leaders) -->
+<section id="sevas" class="section-y pt-sevas" aria-labelledby="sevas-title">
+  <div class="container-temple pt-sevas-grid">
+    <div class="pt-sevas-media" data-reveal="zoom">
+      <figure class="pt-sevas-photo hm-zoom">
+      <img
+        src="assets/img/pages/pooja-seva-1400.jpg"
+        srcset="assets/img/pages/pooja-seva-800.jpg 800w, assets/img/pages/pooja-seva-1400.jpg 1400w"
+        sizes="(min-width: 64rem) 440px, 100vw"
+        loading="lazy" decoding="async"
+        alt="A long tiled-roof temple building with a lattice wall of lamp niches and a tall lamp column in front">
+    </figure>
+      <figure class="pt-sevas-photo2 hm-zoom">
+        <img src="assets/img/pages3/pooja-coconut-1400.jpg" srcset="assets/img/pages3/pooja-coconut-800.jpg 800w, assets/img/pages3/pooja-coconut-1400.jpg 1400w" sizes="(min-width: 64rem) 440px, 100vw" loading="lazy" decoding="async" alt="A large heap of coconuts offered by devotees at a temple">
+      </figure>
+    </div>
+
+    <div class="pt-sevas-main">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Special Poojas &amp; Sevas</p>
+        <h2 id="sevas-title">Offerings made in your name</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-heart-hand"/></svg></div>
+        <p class="hm-lead">{{site.poojaPage.sevaNote}}</p>
+      </div>
+
+      <ul class="pt-ledger">
+        {{#each site.home.sevas}}
+        <li data-reveal style="--reveal-delay:{{this.index}}00ms">
+          <div class="pt-ledger-top">
+            <h3>{{this.name}}</h3>
+            <span class="pt-leader" aria-hidden="true"></span>
+            <span class="pt-chip">Details to be confirmed</span>
+          </div>
+          <p>{{this.summary}}</p>
+          <a class="link-arrow" href="contact.html?topic=seva-{{this.id}}">Enquire about {{this.name}}<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>

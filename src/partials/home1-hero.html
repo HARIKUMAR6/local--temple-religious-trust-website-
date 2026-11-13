@@ -1,0 +1,43 @@
+<!-- 1 · Hero -->
+<section id="top" class="hero-shell hm-hero" aria-labelledby="hero-title">
+  <div class="hero-media">
+    <img
+      src="assets/img/home/hero-1800.jpg"
+      srcset="assets/img/home/hero-960.jpg 960w, assets/img/home/hero-1800.jpg 1800w, assets/img/home/hero-2560.jpg 2560w"
+      sizes="100vw"
+      width="2560" height="1927"
+      fetchpriority="high" decoding="async"
+      alt="Richly sculpted and painted gopuram tower of a South Indian temple, seen from below against a blue sky">
+    <span class="hm-hero-shade" aria-hidden="true"></span>
+  </div>
+
+  <div class="container-temple hm-hero-body">
+    <div class="hm-hero-copy">
+      <p class="hm-hero-eyebrow" data-reveal>Dedicated to {{site.deity}}</p>
+      <h1 id="hero-title" data-reveal style="--reveal-delay:90ms">{{site.templeName}}</h1>
+      <div class="ornament is-start" aria-hidden="true" data-reveal style="--reveal-delay:150ms"><svg class="icon"><use href="#i-lotus"/></svg></div>
+      <p class="hm-hero-lead" data-reveal style="--reveal-delay:210ms">Come with a quiet mind. Worship, light a lamp and share in the life of the temple, together with a devoted community.</p>
+      <div class="hm-cta-row is-start" data-reveal style="--reveal-delay:290ms">
+        <a class="btn btn-gold btn-lg" href="contact.html"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Plan Your Visit</a>
+        <a class="btn btn-on-dark btn-lg" href="pooja-timings.html"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Pooja Timings</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-temple hm-facts-wrap" data-reveal style="--reveal-delay:380ms">
+    <div class="hm-facts">
+      <a class="hm-fact" href="pooja-timings.html">
+        <span class="hm-fact-icon"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span>
+        <span><span class="hm-fact-label">Darshan &amp; Pooja</span><span class="hm-fact-value">View the daily schedule</span></span>
+      </a>
+      <div class="hm-fact">
+        <span class="hm-fact-icon"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg></span>
+        <span><span class="hm-fact-label">Visit</span><span class="hm-fact-value">{{site.address.line1}}, {{site.address.city}}</span></span>
+      </div>
+      <a class="hm-fact" href="tel:{{site.phone.href}}">
+        <span class="hm-fact-icon"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <span><span class="hm-fact-label">Call the temple office</span><span class="hm-fact-value">{{site.phone.display}}</span></span>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,27 @@
+<!-- About 2 · Introduction & spiritual significance -->
+<section id="intro" class="section-y ab-intro" aria-labelledby="intro-title">
+  <div class="container-temple ab-intro-grid">
+    <div class="ab-intro-lead" data-reveal>
+      <p class="text-eyebrow-style">Spiritual Significance</p>
+      <h2 id="intro-title">A place to pause, pray and belong</h2>
+      <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-lamp"/></svg></div>
+      <svg class="ab-intro-mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false"><use href="#mark-outline"/></svg>
+    </div>
+
+    <div class="ab-intro-body">
+      <p class="hm-lead" data-reveal>{{site.templeName}} is a place of worship dedicated to {{site.deity}}. For devotees it is a place of prayer, peace and belonging.</p>
+      <p data-reveal style="--reveal-delay:80ms">Temples in the South Indian tradition are centres of daily worship, sacred art and community life. They carry the memory of generations of devotees, and each is cared for so that the next generation can worship there too.</p>
+
+      <dl class="ab-facts" data-reveal style="--reveal-delay:140ms">
+        {{#each site.about.facts}}
+        <div class="ab-fact">
+          <dt><svg class="icon" aria-hidden="true"><use href="#i-{{this.icon}}"/></svg>{{this.label}}</dt>
+          <dd>{{#if this.useDeity}}{{site.deity}}{{/if}}{{#if this.useTrust}}{{site.trustName}}{{/if}}{{#if this.value}}{{this.value}}{{/if}}</dd>
+        </div>
+        {{/each}}
+      </dl>
+
+      <p class="hm-notice" data-reveal><svg class="icon" aria-hidden="true"><use href="#i-temple"/></svg><span>{{site.about.pendingNote}}</span></p>
+    </div>
+  </div>
+</section>

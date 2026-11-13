@@ -1,0 +1,47 @@
+<!-- 5 · Special Poojas & Sevas -->
+<section id="sevas" class="section-y hm-sevas" aria-labelledby="sevas-title" data-seva-enquiry>
+  <div class="container-temple hm-sevas-grid">
+    <div class="hm-sevas-main">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Special Poojas &amp; Sevas</p>
+        <h2 id="sevas-title">Offer a seva with devotion</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-heart-hand"/></svg></div>
+        <p class="hm-lead">Devotees often sponsor special poojas and sevas for family occasions or personal intentions. Select one to start an enquiry. Availability and offering details are confirmed by the temple office.</p>
+      </div>
+
+      <fieldset class="hm-seva-list" data-reveal>
+        <legend class="sr-only">Choose a seva to enquire about</legend>
+        {{#each site.home.sevas}}
+        <label class="hm-seva">
+          <input type="radio" name="seva" value="{{this.id}}" data-name="{{this.name}}" {{#if this.first}}checked{{/if}}>
+          <span class="hm-seva-mark" aria-hidden="true"><svg class="icon"><use href="#i-check"/></svg></span>
+          <span><span class="hm-seva-name">{{this.name}}</span><span class="hm-seva-summary">{{this.summary}}</span></span>
+        </label>
+        {{/each}}
+      </fieldset>
+    </div>
+
+    <aside class="hm-enquiry" aria-labelledby="enquiry-title" data-reveal="zoom">
+      <figure class="hm-enquiry-media hm-zoom">
+        <img
+          src="assets/img/home/seva-1400.jpg"
+          srcset="assets/img/home/seva-800.jpg 800w, assets/img/home/seva-1400.jpg 1400w"
+          sizes="(min-width: 64rem) 30rem, 100vw"
+          loading="lazy" decoding="async"
+          alt="Detail of a gopuram's richly coloured sculpted figures and decorative tiers">
+      </figure>
+      <div class="hm-enquiry-body">
+        <div>
+          <p class="text-eyebrow-style">Enquire about</p>
+          <h3 id="enquiry-title" data-seva-selected>{{site.home.sevas.0.name}}</h3>
+        </div>
+        <p class="hm-lead" style="font-size:var(--text-small)">Reach the temple office to ask about availability, the offering and how to book.</p>
+        <div class="hm-enquiry-actions">
+          <a class="btn btn-primary" href="tel:{{site.phone.href}}" data-enquiry-call><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call the Temple Office</a>
+          <a class="btn btn-outline" href="mailto:{{site.email}}?subject=Seva%20enquiry" data-enquiry-mail><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Email an Enquiry</a>
+          <a class="btn btn-ghost" href="contact.html" data-enquiry-online>Use the Contact Page<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

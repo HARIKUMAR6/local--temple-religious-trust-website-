@@ -1,0 +1,34 @@
+<!-- About 4 · Architecture & sacred spaces (photo mosaic + disclosure list) -->
+<section id="architecture" class="section-y ab-arch" aria-labelledby="arch-title">
+  <div class="container-temple ab-arch-grid">
+    <div class="ab-mosaic" data-reveal="zoom">
+      <figure class="hm-zoom ab-m1"><img src="assets/img/pages/about-arch-1-1000.jpg" srcset="assets/img/pages/about-arch-1-640.jpg 640w, assets/img/pages/about-arch-1-1000.jpg 1000w" sizes="(min-width: 64rem) 300px, 50vw" loading="lazy" decoding="async" alt="A stone temple with a tiered tower rising above a carved base, lit by warm evening sun"></figure>
+      <figure class="hm-zoom ab-m2"><img src="assets/img/pages/about-arch-2-1000.jpg" srcset="assets/img/pages/about-arch-2-640.jpg 640w, assets/img/pages/about-arch-2-1000.jpg 1000w" sizes="(min-width: 64rem) 300px, 50vw" loading="lazy" decoding="async" alt="Carved stone wall with a sculpted figure in a niche between decorated pilasters"></figure>
+      <figure class="hm-zoom ab-m3"><img src="assets/img/pages/about-arch-3-1000.jpg" srcset="assets/img/pages/about-arch-3-640.jpg 640w, assets/img/pages/about-arch-3-1000.jpg 1000w" sizes="(min-width: 64rem) 300px, 50vw" loading="lazy" decoding="async" alt="A stone guardian figure carved beside a temple doorway"></figure>
+    </div>
+
+    <div class="ab-arch-copy">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Architecture &amp; Sacred Spaces</p>
+        <h2 id="arch-title">The spaces of a South Indian temple</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-temple"/></svg></div>
+        <p class="hm-lead">South Indian temples are built as a journey inward. These are the spaces devotees will usually meet; the Trust will confirm which ones this temple has.</p>
+      </div>
+
+      <ul class="ab-spaces" data-disclosure-group>
+        {{#each site.about.sacredSpaces}}
+        <li class="ab-space" data-disclosure>
+          <button type="button" class="ab-space-btn" aria-expanded="false" aria-controls="space-{{this.id}}" data-disclosure-trigger>
+            <span>{{this.name}}</span>
+            <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>
+          </button>
+          <div class="ab-space-panel" id="space-{{this.id}}" data-disclosure-panel>
+            <p>{{this.text}}</p>
+            <p class="ab-status"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>{{this.status}}</p>
+          </div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>

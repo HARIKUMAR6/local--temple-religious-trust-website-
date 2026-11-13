@@ -1,0 +1,18 @@
+<!-- Contact 3 · Interactive map -->
+<section id="map" class="ct-map" aria-labelledby="map-title">
+  <div class="container-temple ct-map-grid">
+    <div class="ct-map-card" data-reveal>
+      <p class="text-eyebrow-style">Find the Temple</p>
+      <h2 id="map-title">On the map</h2>
+      <address class="ct-map-address"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg><span>{{site.address.line1}}, {{site.address.line2}}, {{site.address.city}}, {{site.address.state}} {{site.address.postalCode}}, {{site.address.country}}</span></address>
+      <div class="ct-map-actions">
+        <a class="btn btn-primary btn-sm" href="{{site.contact.directionsUrl}}" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-map-pin"/></svg>Get Directions<span class="sr-only"> (opens in a new tab)</span></a>
+        <a class="btn btn-outline btn-sm" href="{{site.contact.mapOpenUrl}}" target="_blank" rel="noopener">Open Larger Map<span class="sr-only"> (opens in a new tab)</span></a>
+      </div>
+      <a class="sr-only-focusable ct-skip" href="#form">Skip the map and go to the enquiry form</a>
+    </div>
+    <div class="ct-map-frame" data-reveal="fade" data-map>
+      <iframe title="Map showing {{site.address.line1}}, {{site.address.city}}" src="{{site.contact.mapEmbedSrc}}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+    </div>
+  </div>
+</section>

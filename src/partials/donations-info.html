@@ -1,0 +1,34 @@
+<!-- Donations 5 · Donation information & guidance -->
+<section id="info" class="section-y dn-info" aria-labelledby="info-title">
+  <div class="container-temple dn-info-grid">
+    <div class="dn-verify" data-reveal>
+      <figure class="dn-verify-photo hm-zoom"><img src="assets/img/home/seva-1400.jpg" srcset="assets/img/home/seva-800.jpg 800w, assets/img/home/seva-1400.jpg 1400w" sizes="(min-width: 64rem) 460px, 100vw" loading="lazy" decoding="async" alt="Detail of a gopuram's richly coloured sculpted figures and decorative tiers"></figure>
+      <p class="text-eyebrow-style">Donation Information</p>
+      <h2 id="info-title">Official details</h2>
+      {{#if site.donationsPage.status}}
+      <p class="dn-status" role="status"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><span>{{site.donationsPage.status}}</span></p>
+      {{/if}}
+      <dl class="dn-details">
+        {{#each site.donationsPage.details}}
+        <div><dt>{{this.label}}</dt><dd>{{this.value}}</dd></div>
+        {{/each}}
+      </dl>
+      <div class="dn-verify-actions">
+        <a class="btn btn-primary btn-sm" href="tel:{{site.phone.href}}"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>Call the Office</a>
+        <a class="btn btn-outline btn-sm" href="contact.html?topic=donation"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Send an Enquiry</a>
+      </div>
+    </div>
+
+    <div class="dn-faq" data-reveal style="--reveal-delay:100ms">
+      <h3 class="dn-faq-title">Before you give</h3>
+      <ul class="ab-spaces" data-disclosure-group>
+        {{#each site.donationsPage.faqs}}
+        <li class="ab-space" data-disclosure>
+          <button type="button" class="ab-space-btn" aria-expanded="false" aria-controls="faq-{{this.id}}" data-disclosure-trigger><span>{{this.q}}</span><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg></button>
+          <div class="ab-space-panel" id="faq-{{this.id}}" data-disclosure-panel><p>{{this.a}}</p></div>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>

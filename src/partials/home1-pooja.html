@@ -1,0 +1,46 @@
+<!-- 3 · Daily Pooja Timings -->
+<section id="pooja" class="section-y hm-dark hm-pooja" aria-labelledby="pooja-title" data-pooja data-tz="{{site.home.timeZone}}">
+  <div class="container-temple hm-pooja-grid">
+    <div class="hm-pooja-main">
+      <div class="section-head" data-reveal>
+        <p class="text-eyebrow-style">Daily Pooja Timings</p>
+        <h2 id="pooja-title">Worship through the day</h2>
+        <div class="ornament is-start" aria-hidden="true"><svg class="icon"><use href="#i-bell"/></svg></div>
+        <p class="hm-lead">Worship at a temple moves through the day, from morning to night. The temple office will publish the confirmed rituals and timings here.</p>
+      </div>
+
+      <div class="hm-chips" role="group" aria-label="Filter by time of day" data-reveal>
+        <button type="button" class="hm-chip" data-filter="all" aria-pressed="true">All</button>
+        {{#each site.home.poojaSlots}}<button type="button" class="hm-chip" data-filter="{{this.id}}" aria-pressed="false">{{this.period}}</button>{{/each}}
+      </div>
+      <p class="sr-only" role="status" aria-live="polite" data-pooja-status></p>
+
+      <ol class="hm-slots" data-reveal>
+        {{#each site.home.poojaSlots}}
+        <li class="hm-slot" data-slot="{{this.id}}" data-start="{{this.start}}" data-end="{{this.end}}">
+          <button type="button" class="hm-slot-btn" aria-expanded="false" aria-controls="slot-panel-{{this.id}}" data-slot-toggle>
+            <span class="hm-slot-icon"><svg class="icon" aria-hidden="true"><use href="#i-{{this.icon}}"/></svg></span>
+            <span><span class="hm-slot-period">{{this.period}}</span><span class="hm-slot-name">{{this.name}}</span></span>
+            <span class="hm-slot-time">{{this.timeLabel}}</span>
+            <svg class="icon hm-slot-chev" aria-hidden="true"><use href="#i-chevron-down"/></svg>
+          </button>
+          <div class="hm-slot-panel" id="slot-panel-{{this.id}}" hidden>
+            <p>{{this.detail}}</p>
+          </div>
+        </li>
+        {{/each}}
+      </ol>
+
+      <a class="btn btn-gold" href="pooja-timings.html" data-reveal>View Full Pooja Timings<svg class="icon icon-dir" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
+
+    <figure class="hm-arch hm-zoom hm-pooja-photo" data-reveal="zoom">
+      <img
+        src="assets/img/home/pooja-1600.jpg"
+        srcset="assets/img/home/pooja-800.jpg 800w, assets/img/home/pooja-1600.jpg 1600w"
+        sizes="(min-width: 64rem) 24rem, 100vw"
+        loading="lazy" decoding="async"
+        alt="A long wall of glowing oil lamps lit inside a temple corridor">
+    </figure>
+  </div>
+</section>
